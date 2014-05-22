@@ -38,12 +38,12 @@ describe 'ShowAllLocations' do
   end
 
   it 'exists' do
-    expect(ShowLocationCheckins).to be_a(Class)
+    expect(ShowCheckinsByLocation).to be_a(Class)
   end
 
   it 'returns an array of active checkins for a location' do
-    result_1 = MakerSpots::ShowLocationCheckins.run(@location1.id)
-    result_2 = MakerSpots::ShowLocationCheckins.run(@location2.id)
+    result_1 = MakerSpots::ShowCheckinsByLocation.run(@location1.id)
+    result_2 = MakerSpots::ShowCheckinsByLocation.run(@location2.id)
     expect(result_1[:checkins].length).to eq(3)
     expect(result_2[:checkins].length).to eq(1)
     expect(result_2[:checkins].first).to be_a(Checkin)
@@ -51,7 +51,7 @@ describe 'ShowAllLocations' do
 
   it 'does not retrive inactive checkins' do
     @checkin5 = MakerSpots.db.check_out(@checkin5.id)
-    result = MakerSpots::ShowLocationCheckins.run(@location1.id)
+    result = MakerSpots::ShowCheckinsByLocation.run(@location1.id)
     expect(result[:checkins].length).to eq(2)
   end
 

@@ -210,12 +210,16 @@ class MakerSpots::DB
     build_checkin(data_hash)
   end
 
-  def get_checkin(id)
+  def get_checkins_by_user(user_id)
     # Input: id[integer]
-    # Output: Checkin object
+    # Output: Active checkin object
 
+    # Only select active checkins for a user
     data = @db.execute(
-      "SELECT * FROM checkins where id = ?", id
+      "SELECT * FROM checkins
+      WHERE user_id = ?
+      AND checked_in = ?
+      ", user_id, 1
     ).flatten
 
     data_hash = {

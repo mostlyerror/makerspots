@@ -2,7 +2,6 @@ class MakerSpots::SignUpUser
 
   def self.run(data)
 
-    # check if user exists
     existing_user = MakerSpots.db.get_user_by_email(data[:email])
 
     unless existing_user

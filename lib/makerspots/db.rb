@@ -115,6 +115,24 @@ class MakerSpots::DB
     build_user(data_hash)
   end
 
+  def get_user(id)
+    # Input: id[integer]
+    # Output: User object
+
+    data = @db.execute(
+      "SELECT * FROM users where id = ?", id
+      ).flatten!
+
+    data_hash = {
+      id: data[0],
+      name: data[1],
+      email: data[2],
+      password: data[3]
+    }
+
+    build_user(data_hash)
+  end
+
   def build_checkin(data)
     MakerSpots::Checkin.new(data)
   end

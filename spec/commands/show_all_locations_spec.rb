@@ -43,5 +43,6 @@ describe 'ShowAllLocations' do
       @db.execute <<-SQL
         DELETE from locations
       SQL
+
     end
 end

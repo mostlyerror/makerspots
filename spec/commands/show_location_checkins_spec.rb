@@ -15,37 +15,53 @@ describe 'ShowAllLocations' do
       phone: "5124695888",
       address: '609 Congress Ave'
       )
-
+    @checkin2 =
+        MakerSpots.db.create_checkin(
+          location_id: @location1.id,
+          user_id: 1
+        )
+      @checkin3 =
+        MakerSpots.db.create_checkin(
+          location_id: @location1.id,
+          user_id: 2
+        )
+      @checkin4 =
+        MakerSpots.db.create_checkin(
+          location_id: @location2.id,
+          user_id: 3
+        )
+      @checkin5 =
+        MakerSpots.db.create_checkin(
+          location_id: @location1.id,
+          user_id: 4
+        )
   end
 
   it 'exists' do
     expect(ShowLocationCheckins).to be_a(Class)
   end
 
-  it 'returns success' do
-    expect(MakerSpots::ShowAllLocations.run[:success?]).to eq(true)
+  it 'returns an array of active checkins for a location' do
+    result_1 = MakerSpots::ShowLocationCheckins.run(@location1.id)
+    result_2 = MakerSpots::ShowLocationCheckins.run(@location2.id)
+    expect(result_1[:checkins].length).to eq(3)
+    expect(result_2[:checkins].length).to eq(1)
+    expect(result_2[:checkins].first).to be_a(Checkin)
   end
 
-  it 'returns an array of location objects' do
-    expect(MakerSpots::ShowAllLocations.run[:locations][0]).to be_a(Location)
+  it 'does not retrive inactive checkins' do
+    @checkin5 = MakerSpots.db.check_out(@checkin5.id)
+    result = MakerSpots::ShowLocationCheckins.run(@location1.id)
+    expect(result[:checkins].length).to eq(2)
   end
 
-  it 'returns an error when there are no locations' do
+  after(:each) do
     @db = SQLite3::Database.new "makerspots.db"
     @db.execute <<-SQL
       DELETE from locations
     SQL
-    expect(MakerSpots::ShowAllLocations.run[:success?]).to eq(false)
+    @db.execute <<-SQL
+      DELETE from checkins
+    SQL
   end
-
-
-    after(:each) do
-      @db = SQLite3::Database.new "makerspots.db"
-      @db.execute <<-SQL
-        DELETE from locations
-      SQL
-      @db.execute <<-SQL
-        DELETE from checkins
-      SQL
-    end
 end

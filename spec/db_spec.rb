@@ -44,6 +44,36 @@ describe 'database' do
       expect(location.address).to eq @location.address
     end
 
+    it 'gets all locations in database' do
+      location2 =
+        MakerSpots.db.create_location(
+                name: "Location 2",
+                description: "Description goes here too",
+                phone: "972.898.0711",
+                address: 'An Address'
+                )
+      location3 =
+        MakerSpots.db.create_location(
+                name: "Location 3",
+                description: "Description goes here also",
+                phone: "972.898.0733",
+                address: 'An Address too'
+                )
+      locations = MakerSpots.db.get_all_locations
+
+      expect(locations).to be_a(Array)
+      expect(locations.length).to eq 3
+
+      # Location objects populate correct attributes
+      location = locations.first
+      expect(locations.first).to be_a(Location)
+      expect(location.name).to eq @location.name
+      expect(location.id).to eq @location.id
+      expect(location.description).to eq @location.description
+      expect(location.phone).to eq @location.phone
+      expect(location.address).to eq @location.address
+    end
+
     after(:each) do
       @db = SQLite3::Database.new "makerspots.db"
       @db.execute <<-SQL

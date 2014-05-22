@@ -87,6 +87,29 @@ class MakerSpots::DB
     build_location(data_hash)
   end
 
+  def get_all_locations
+    # Output: Array of Location objects. Ascending order by id
+
+    locations_holder = []
+    data = @db.execute(
+      "SELECT * FROM locations"
+    )
+
+    # Data is array of arrays, l_data is inner array, contains location attributes
+    data.each do |l_data|
+      data_hash = {
+        id: l_data[0],
+        name: l_data[1],
+        description: l_data[2],
+        phone: l_data[3],
+        address: l_data[4]
+      }
+      locations_holder << build_location(data_hash)
+    end
+
+    locations_holder
+  end
+
   def build_user(data)
     MakerSpots::User.new(data)
   end

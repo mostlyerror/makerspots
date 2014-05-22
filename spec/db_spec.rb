@@ -125,6 +125,14 @@ describe 'database' do
       expect(checkin.created_at).to eq @checkin.created_at
     end
 
+    it 'updates checkin.checked_in by id' do
+      checkin = MakerSpots.db.update_checked_in_status(@checkin.id)
+
+      expect(checkin).to be_a(Checkin)
+      expect(checkin.id).to eq @checkin.id
+      expect(checkin.checked_in).to eq 0
+    end
+
     after(:each) do
       @db = SQLite3::Database.new "makerspots.db"
       @db.execute <<-SQL

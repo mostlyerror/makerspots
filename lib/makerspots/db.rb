@@ -227,6 +227,34 @@ class MakerSpots::DB
     build_checkin(data_hash)
   end
 
+  def get_checkins_by_location(loc_id)
+    # Input: id[integer]
+    # Output: Array of Checkin objects
+    checkins_holder = []
+
+    # Only select active checkins for a location
+    data = @db.execute(
+      "SELECT * FROM checkins
+      WHERE location_id = ?
+      AND checked_in = ?
+      ", loc_id, 1
+    )
+
+    data.each do |c_data|
+      data_hash = {
+        id: c_data[0],
+        location_id: c_data[1],
+        user_id: c_data[2],
+        checked_in: c_data[3],
+        created_at: c_data[4]
+      }
+
+      checkins_holder << build_checkin(data_hash)
+    end
+
+    checkins_holder
+  end
+
   def check_out(id)
     # Input: id[integer]
     # Output: Checkin object

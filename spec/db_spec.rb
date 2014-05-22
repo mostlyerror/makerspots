@@ -165,6 +165,45 @@ describe 'database' do
       expect(checkin.created_at).to eq @checkin.created_at
     end
 
+    it 'retrieves all checkins for a location' do
+      checkin2 =
+        MakerSpots.db.create_checkin(
+          location_id: @location.id,
+          user_id: @user.id
+        )
+      checkin3 =
+        MakerSpots.db.create_checkin(
+          location_id: @location.id,
+          user_id: @user.id
+        )
+      checkin4 =
+        MakerSpots.db.create_checkin(
+          location_id: @location.id + 1,
+          user_id: @user.id
+        )
+      checkin5 =
+        MakerSpots.db.create_checkin(
+          location_id: @location.id,
+          user_id: @user.id
+        )
+
+      # Set checked_in to 0
+      checkin5 = MakerSpots.db.check_out(checkin5.id)
+
+      checkins = MakerSpots.db.get_checkins_by_location(@location.id)
+
+      expect(checkins).to be_a(Array)
+
+      # Should only include checkins with matching location id that are active
+      expect(checkins.length).to eq 3
+
+      checkin = checkins.first
+      expect(checkin.location_id).to eq @location.id
+      expect(checkin.user_id).to eq @user.id
+      expect(checkin.checked_in).to eq @checkin.checked_in
+      expect(checkin.created_at).to eq @checkin.created_at
+    end
+
     it 'updates checkin.checked_in by id' do
       checkin = MakerSpots.db.check_out(@checkin.id)
 

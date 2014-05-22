@@ -40,4 +40,28 @@ describe 'database' do
       SQL
     end
   end
+
+  describe 'users' do
+    before(:each) do
+      @user = MakerSpots.db.create_user(
+        name: "david",
+        email: 'david@email.com',
+        password: 'password'
+      )
+    end
+
+    it 'creates a user and returns a User object' do
+      expect(@user).to be_a(User)
+      expect(@user.name).to eq 'david'
+      expect(@user.email).to eq 'david@email.com'
+      expect(@user.password).to eq 'password'
+    end
+
+    after(:each) do
+      @db = SQLite3::Database.new "makerspots.db"
+      @db.execute <<-SQL
+        DELETE from users
+      SQL
+    end
+  end
 end

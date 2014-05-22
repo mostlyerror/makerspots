@@ -5,5 +5,6 @@ end
 
 require_relative './makerspots/db.rb'
 require_relative './makerspots/location.rb'
+require_relative './makerspots/user.rb'
 
 

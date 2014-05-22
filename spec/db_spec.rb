@@ -33,6 +33,17 @@ describe 'database' do
       expect(@location.address).to eq 'Address here'
     end
 
+    it 'gets a location object by id' do
+      location = MakerSpots.db.get_location(@location.id)
+
+      expect(location).to be_a(Location)
+      expect(location.id).to eq @location.id
+      expect(location.name).to eq @location.name
+      expect(location.description).to eq @location.description
+      expect(location.phone).to eq @location.phone
+      expect(location.address).to eq @location.address
+    end
+
     after(:each) do
       @db = SQLite3::Database.new "makerspots.db"
       @db.execute <<-SQL

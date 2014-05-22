@@ -67,6 +67,26 @@ class MakerSpots::DB
     build_location(data_hash)
   end
 
+  def get_location(id)
+    # Input: id[integer]
+    # Output: Location object
+
+    data = @db.execute(
+      "SELECT * FROM locations
+      WHERE id = ?", id
+    ).flatten!
+
+    data_hash = {
+      id: data[0],
+      name: data[1],
+      description: data[2],
+      phone: data[3],
+      address: data[4]
+    }
+
+    build_location(data_hash)
+  end
+
   def build_user(data)
     MakerSpots::User.new(data)
   end

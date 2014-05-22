@@ -54,7 +54,7 @@ class MakerSpots::DB
 
     data = @db.execute(
       "SELECT * FROM locations where id = last_insert_rowid()"
-    ).flatten!
+    ).flatten
 
     data_hash = {
       id: data[0],
@@ -74,7 +74,7 @@ class MakerSpots::DB
     data = @db.execute(
       "SELECT * FROM locations
       WHERE id = ?", id
-    ).flatten!
+    ).flatten
 
     data_hash = {
       id: data[0],
@@ -126,7 +126,7 @@ class MakerSpots::DB
 
     data = @db.execute(
       "SELECT * FROM users where id = last_insert_rowid()"
-    ).flatten!
+    ).flatten
 
     data_hash = {
       id: data[0],
@@ -144,7 +144,7 @@ class MakerSpots::DB
 
     data = @db.execute(
       "SELECT * FROM users where id = ?", id
-      ).flatten!
+      ).flatten
 
     data_hash = {
       id: data[0],
@@ -163,7 +163,9 @@ class MakerSpots::DB
 
     data = @db.execute(
       "SELECT * FROM users where email = ?", email
-      ).flatten!
+      ).flatten
+
+    return false if data.empty?
 
     data_hash = {
       id: data[0],
@@ -195,7 +197,7 @@ class MakerSpots::DB
 
     data = @db.execute(
         "SELECT * FROM checkins where id = last_insert_rowid()"
-      ).flatten!
+      ).flatten
 
     data_hash = {
       id: data[0],
@@ -214,7 +216,7 @@ class MakerSpots::DB
 
     data = @db.execute(
       "SELECT * FROM checkins where id = ?", id
-    ).flatten!
+    ).flatten
 
     data_hash = {
       id: data[0],
@@ -270,8 +272,7 @@ class MakerSpots::DB
 
     data = @db.execute(
       "SELECT * FROM checkins where id = ?", id
-    ).flatten!
-
+    ).flatten
 
     data_hash = {
       id: data[0],

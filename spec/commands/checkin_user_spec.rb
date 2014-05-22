@@ -35,5 +35,11 @@ describe 'SignInUser' do
     @db.execute <<-SQL
       DELETE from users
     SQL
+    @db.execute <<-SQL
+      DELETE from checkins
+    SQL
+    @db.execute <<-SQL
+      DELETE from locations
+    SQL
   end
 end

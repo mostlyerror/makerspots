@@ -1,6 +1,67 @@
-/* line 1, ../../scss/main.scss */
+@font-face {
+  font-family: openRegular;
+  src: url(../custom_fonts/Open_Sans/OpenSans-Regular.ttf); }
+@font-face {
+  font-family: openLight;
+  src: url(../custom_fonts/Open_Sans/OpenSans-Light.ttf); }
+@font-face {
+  font-family: openBold;
+  src: url(../custom_fonts/Open_Sans/OpenSans-Bold.ttf); }
+/* line 1, ../../scss/navbar_override.scss */
+.nav-color {
+  background: #333333; }
+
+/* line 4, ../../scss/navbar_override.scss */
+#brand-text {
+  font-size: 3rem;
+  font-family: openBold;
+  text-decoration: none;
+  color: white; }
+  /* line 6, ../../scss/mixins.scss */
+  #brand-text:hover {
+    text-decoration: none;
+    color: #599ec8; }
+
+/* line 7, ../../scss/navbar_override.scss */
+#drop-nav {
+  font-size: 3rem;
+  font-family: openBold;
+  text-decoration: none;
+  color: white; }
+  /* line 6, ../../scss/mixins.scss */
+  #drop-nav:hover {
+    text-decoration: none;
+    color: #599ec8; }
+
+/* line 10, ../../scss/navbar_override.scss */
+#drop-menu {
+  background-color: #333333; }
+  /* line 13, ../../scss/navbar_override.scss */
+  #drop-menu li a {
+    font-size: 3rem;
+    font-family: openBold;
+    text-decoration: none;
+    color: white; }
+    /* line 6, ../../scss/mixins.scss */
+    #drop-menu li a:hover {
+      text-decoration: none;
+      color: #599ec8; }
+
+/* line 18, ../../scss/navbar_override.scss */
+#sign {
+  font-size: 3rem;
+  font-family: openBold;
+  text-decoration: none;
+  color: white; }
+  /* line 6, ../../scss/mixins.scss */
+  #sign:hover {
+    text-decoration: none;
+    color: #599ec8; }
+
+/* line 21, ../../scss/navbar_override.scss */
+#spots {
+  font-family: openLight; }
+
+/* line 8, ../../scss/main.scss */
 body {
-  background-color: green; }
-  /* line 3, ../../scss/main.scss */
-  body h1 {
-    color: blue; }
+  background-color: #f7f7f7; }

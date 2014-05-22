@@ -25,6 +25,17 @@ class MakerSpots::DB
       PRIMARY KEY (id)
       )"
     )
+
+    @db.execute(
+      "CREATE TABLE if not exists checkins(
+        id integer,
+        location_id integer,
+        user_id integer,
+        checked_in boolean,
+        created_at datetime,
+        PRIMARY KEY (id)
+      )"
+    )
   end
 
   def build_location(data)
@@ -32,7 +43,7 @@ class MakerSpots::DB
   end
 
   def create_location(data)
-    # Input: hash, data, name, description, phone address required
+    # Input: hash, data, name[string], description[string], phone[string], address[string]. Name, desc, address required
     # Output: Location object
 
     @db.execute(
@@ -61,6 +72,9 @@ class MakerSpots::DB
   end
 
   def create_user(data)
+    # Input: hash, data name[string], email[string], password[string]. All required
+    # Output: User object
+
     @db.execute(
       "INSERT INTO users (name, email, password)
       VALUES (?,?,?)",
@@ -79,6 +93,37 @@ class MakerSpots::DB
     }
 
     build_user(data_hash)
+  end
+
+  def build_checkin(data)
+    MakerSpots::Checkin.new(data)
+  end
+
+  def create_checkin(data)
+    # Input: hash, data location_id[integer], user_id[integer]
+    # Output: Checkin object
+    # Checkins belong to locations and users. Checked_in is a boolean value, only one checkin per user can be true at any one time. Handle this in a command that runs before creating a new checkin
+
+    @db.execute(
+      "INSERT INTO checkins (
+        location_id, user_id, checked_in, created_at)
+        VALUES (?,?,?,CURRENT_TIMESTAMP)",
+        data[:location_id], data[:user_id], 1
+    )
+
+    data = @db.execute(
+        "SELECT * FROM checkins where id = last_insert_rowid()"
+      ).flatten!
+
+    data_hash = {
+      id: data[0],
+      location_id: data[1],
+      user_id: data[2],
+      checked_in: data[3],
+      created_at: data[4]
+    }
+
+    build_checkin(data_hash)
   end
 end
 

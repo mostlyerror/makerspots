@@ -64,4 +64,46 @@ describe 'database' do
       SQL
     end
   end
+
+  describe 'checkins' do
+    before(:each) do
+      @user = MakerSpots.db.create_user(
+        name: "david",
+        email: 'david@email.com',
+        password: 'password'
+      )
+      @location = MakerSpots.db.create_location(
+        name: "Location",
+        description: "Description goes here",
+        phone: "972.898.0722",
+        address: 'Address here'
+      )
+      @checkin = MakerSpots.db.create_checkin(
+        location_id: @location.id,
+        user_id: @user.id,
+      )
+    end
+
+    it 'creates a checkin object associated with a user and location id' do
+      expect(@checkin).to be_a(Checkin)
+      expect(@checkin.location_id).to eq @location.id
+      expect(@checkin.user_id).to eq @user.id
+      expect(@checkin.checked_in).to eq 1
+      # TODO: test the datetime is assigned correctly.
+      expect(@checkin.created_at).not_to eq nil
+    end
+
+    after(:each) do
+      @db = SQLite3::Database.new "makerspots.db"
+      @db.execute <<-SQL
+        DELETE from users
+      SQL
+      @db.execute <<-SQL
+        DELETE from locations
+      SQL
+      @db.execute <<-SQL
+        DELETE from checkins
+      SQL
+    end
+  end
 end

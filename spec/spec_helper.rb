@@ -9,19 +9,19 @@ include MakerSpots
 ENV['RACK_ENV'] = 'test'
 
 #Mixin for testing sinatra
-module RSpecMixin
-  include Rack::Test::Methods
-  def app
-    Sinatra::Application
-  end
-  Capybara.app = Sinatra::Application.new
-end
+# module RSpecMixin
+#   include Rack::Test::Methods
+#   def app
+#     Sinatra::Application
+#   end
+#   Capybara.app = Sinatra::Application.new
+# end
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
   config.run_all_when_everything_filtered = true
-  config.filter_run :focus
-  config.include RSpecMixin
+  # config.filter_run :focus
+  #config.include RSpecMixin
   config.include Capybara::DSL
 
   # Run specs in random order to surface order dependencies. If you find an
@@ -32,5 +32,5 @@ RSpec.configure do |config|
 end
 
 Capybara.configure do |config|
-  config.include RSpecMixin
+  #config.include RSpecMixin
 end

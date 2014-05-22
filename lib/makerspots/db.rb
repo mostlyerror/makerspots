@@ -163,6 +163,54 @@ class MakerSpots::DB
 
     build_checkin(data_hash)
   end
+
+  def get_checkin(id)
+    # Input: id[integer]
+    # Output: Checkin object
+
+    data = @db.execute(
+      "SELECT * FROM checkins where id = ?", id
+    ).flatten!
+
+    data_hash = {
+      id: data[0],
+      location_id: data[1],
+      user_id: data[2],
+      checked_in: data[3],
+      created_at: data[4]
+    }
+
+    build_checkin(data_hash)
+  end
+
+  def update_checked_in_status(id)
+    # Input: id[integer]
+    # Output: Checkin object
+    # This method should run on any user checkins that have a checked_in value of 1 before creating a new checkin
+    # Only updates checked_in from 1 to 0
+
+    @db.execute(
+      "UPDATE checkins
+      SET checked_in = ?
+      WHERE id = ?
+      AND checked_in = ?", 0, id, 1
+    )
+
+    data = @db.execute(
+      "SELECT * FROM checkins where id = ?", id
+    ).flatten!
+
+
+    data_hash = {
+      id: data[0],
+      location_id: data[1],
+      user_id: data[2],
+      checked_in: data[3],
+      created_at: data[4]
+    }
+
+    build_checkin(data_hash)
+  end
 end
 
 module MakerSpots

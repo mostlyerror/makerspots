@@ -5,5 +5,4 @@ require_relative 'app.rb'
 set :bind, '0.0.0.0'
 
 get '/' do
-  erb :test
 end

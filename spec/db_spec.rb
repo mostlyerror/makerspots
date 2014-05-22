@@ -114,6 +114,17 @@ describe 'database' do
       expect(@checkin.created_at).not_to eq nil
     end
 
+    it 'retrieves a checkin object by checkin id' do
+      checkin = MakerSpots.db.get_checkin(@checkin.id)
+
+      expect(checkin).to be_a(Checkin)
+      expect(checkin.id).to eq @checkin.id
+      expect(checkin.location_id).to eq @checkin.location_id
+      expect(checkin.user_id).to eq @checkin.user_id
+      expect(checkin.checked_in).to eq @checkin.checked_in
+      expect(checkin.created_at).to eq @checkin.created_at
+    end
+
     after(:each) do
       @db = SQLite3::Database.new "makerspots.db"
       @db.execute <<-SQL

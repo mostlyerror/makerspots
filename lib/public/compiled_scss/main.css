@@ -1,0 +1,6 @@
+/* line 1, ../../scss/main.scss */
+body {
+  background-color: green; }
+  /* line 3, ../../scss/main.scss */
+  body h1 {
+    color: blue; }

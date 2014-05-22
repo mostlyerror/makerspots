@@ -1,13 +1,14 @@
 class MakerSpots::CheckinUser
 
-  def self.run(email, password)
-  	user = MakerSpots.db.get_user_by_email(email)
-  	return { success?: false, error: "Email does not match our records" } if !user
-  	return { success?: false, error: "Incorrect Password" } if password != user.password
+  def self.run(user_id, loc_id)
+
+  	checkins = MakerSpots.db.get_checkins_by_user(user_id)
+  	MakerSpots.db.checkout(checkins.id)
+  	new_checkin = MakerSpots.db.create_checkin(location_id: loc_id, user_id: user_id)
   	{
   		success?: true,
-  		user: user,
-  		message: "#{user.name} signed in."
+  		checkin: new_checkin,
+  		message: "checkin created"
   	}
   end
 end

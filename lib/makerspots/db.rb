@@ -261,7 +261,7 @@ class MakerSpots::DB
     checkins_holder
   end
 
-  def check_out(id)
+  def checkout(id)
     # Input: id[integer]
     # Output: Checkin object
     # This method should run on any user checkins that have a checked_in value of 1 before creating a new checkin

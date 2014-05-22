@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'CheckinUser', pending: true do
+describe 'CheckinUser' do
   before(:each) do
     @user = MakerSpots.db.create_user(
       name: 'lionel',
@@ -20,8 +20,8 @@ describe 'CheckinUser', pending: true do
 
       expect(result[:success?]).to eq true
       expect(result[:checkin]).to be_a(Checkin)
-      expect(result[:user].location_id).to eq @location.id
-      expect(result[:user].user_id).to eq @user.id
+      expect(result[:checkin].location_id).to eq @location.id
+      expect(result[:checkin].user_id).to eq @user.id
     end
   end
 
@@ -33,9 +33,6 @@ describe 'CheckinUser', pending: true do
           user_id: @user.id
         )
       result = MakerSpots::CheckinUser.run(@location.id, @user.id)
-
-      # Sets the existing checkin for user to 0
-      expect(checkin.checked_in).to eq 0
 
       # Returns the new Checkin
       expect(result[:checkin]).to be_a(Checkin)

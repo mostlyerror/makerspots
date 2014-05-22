@@ -142,6 +142,8 @@ class MakerSpots::DB
     # Output: Checkin object
     # Checkins belong to locations and users. Checked_in is a boolean value, only one checkin per user can be true at any one time. Handle this in a command that runs before creating a new checkin
 
+    # TODO: Validate that checkin with value of 1 does not exist for given user.
+
     @db.execute(
       "INSERT INTO checkins (
         location_id, user_id, checked_in, created_at)
@@ -183,7 +185,7 @@ class MakerSpots::DB
     build_checkin(data_hash)
   end
 
-  def update_checked_in_status(id)
+  def check_out(id)
     # Input: id[integer]
     # Output: Checkin object
     # This method should run on any user checkins that have a checked_in value of 1 before creating a new checkin

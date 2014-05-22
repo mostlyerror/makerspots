@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'ShowCheckinsByLocation' do
+describe 'ShowFeed' do
   before(:each) do
     @location1 = MakerSpots.db.create_location(
       name: "Wholly Cow Burgers",
@@ -38,21 +38,11 @@ describe 'ShowCheckinsByLocation' do
   end
 
   it 'exists' do
-    expect(ShowCheckinsByLocation).to be_a(Class)
+    expect(ShowFeed).to be_a(Class)
   end
 
-  it 'returns an array of active checkins for a location' do
-    result_1 = MakerSpots::ShowCheckinsByLocation.run(@location1.id)
-    result_2 = MakerSpots::ShowCheckinsByLocation.run(@location2.id)
-    expect(result_1[:checkins].length).to eq(3)
-    expect(result_2[:checkins].length).to eq(1)
-    expect(result_2[:checkins].first).to be_a(Checkin)
-  end
-
-  it 'does not retrive inactive checkins' do
-    @checkin5 = MakerSpots.db.check_out(@checkin5.id)
-    result = MakerSpots::ShowCheckinsByLocation.run(@location1.id)
-    expect(result[:checkins].length).to eq(2)
+  it 'returns a hash of locations and checkins' do
+    expect(MakerSpots::ShowFeed.run[:locations].length).to eq(2)
   end
 
   after(:each) do

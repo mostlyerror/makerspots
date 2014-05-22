@@ -9,6 +9,7 @@ require_relative './makerspots/user.rb'
 require_relative './makerspots/checkin.rb'
 require_relative './commands/show_all_locations.rb'
 require_relative './commands/show_checkins_by_location.rb'
+require_relative './commands/show_feed.rb'
 require_relative 'app.rb'
 
 

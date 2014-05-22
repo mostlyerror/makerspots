@@ -12,7 +12,7 @@ describe 'SignInUser' do
   describe 'with valid credentials' do
     it 'returns a successful results hash' do
 
-      result = MakerSpots::SignInUser.run(@user.name, @user.password)
+      result = MakerSpots::SignInUser.run(@user.email, @user.password)
 
       expect(result[:success?]).to eq true
       expect(result[:user]).to be_a(User)
@@ -25,7 +25,7 @@ describe 'SignInUser' do
       result = MakerSpots::SignInUser.run('lionel', 'notreal')
 
       expect(result[:success?]).to eq false
-      expect(result[:error]).to eq 'Username and password do not match our records'
+      expect(result[:error]).to eq 'Email does not match our records'
       expect(result[:user]).to eq nil
     end
   end

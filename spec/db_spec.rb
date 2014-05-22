@@ -99,7 +99,17 @@ describe 'database' do
     end
 
     it 'gets a user object from database by id' do
-      user = MakerSpots.db.get_user(@user.id)
+      user = MakerSpots.db.get_user_by_id(@user.id)
+
+      expect(user).to be_a(User)
+      expect(user.id).to eq @user.id
+      expect(user.name).to eq @user.name
+      expect(user.email).to eq @user.email
+      expect(user.password).to eq @user.password
+    end
+
+    it 'gets a user object from database by email' do
+      user = MakerSpots.db.get_user_by_email(@user.email)
 
       expect(user).to be_a(User)
       expect(user.id).to eq @user.id

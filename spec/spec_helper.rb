@@ -1,6 +1,6 @@
 require 'pry'
 require './lib/makerspots.rb'
-# require './lib/app.rb'
+require './lib/app.rb'
 require 'rspec'
 require 'rack/test'
 require 'capybara/rspec'

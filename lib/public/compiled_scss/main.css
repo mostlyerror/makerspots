@@ -111,34 +111,35 @@
 
 /* line 47, ../../scss/desktop_style.scss */
 .description {
+  display: none;
   border-left: 2px solid #c7c9cb;
   border-right: 2px solid #c7c9cb;
   padding: 4rem; }
-  /* line 51, ../../scss/desktop_style.scss */
+  /* line 52, ../../scss/desktop_style.scss */
   .description span {
     font-family: openRegular;
     font-size: 1.5rem; }
-  /* line 55, ../../scss/desktop_style.scss */
+  /* line 56, ../../scss/desktop_style.scss */
   .description .heading {
     font-family: openBold; }
-  /* line 58, ../../scss/desktop_style.scss */
+  /* line 59, ../../scss/desktop_style.scss */
   .description .about-drop {
     clear: both;
     font-family: openBold;
     font-size: 2.5rem; }
-  /* line 63, ../../scss/desktop_style.scss */
+  /* line 64, ../../scss/desktop_style.scss */
   .description .info {
     display: block;
     clear: both;
     margin-top: 0; }
-  /* line 68, ../../scss/desktop_style.scss */
+  /* line 69, ../../scss/desktop_style.scss */
   .description .contact {
     float: left;
     margin-right: 2rem;
     margin-bottom: 2rem; }
 
 @media (max-width: 1200px) {
-  /* line 76, ../../scss/desktop_style.scss */
+  /* line 77, ../../scss/desktop_style.scss */
   .about .title {
     font-size: 0.75em; } }
 /* line 1, ../../scss/landing.scss */

@@ -5,6 +5,8 @@ require_relative 'makerspots.rb'
 
 enable :sessions
 
+set :bind, "0.0.0.0"
+
 get '/' do
   # Render the home page if the user is signed in
   if session[:user]
@@ -49,14 +51,6 @@ get '/landing' do
   erb :landing, :layout => :landing_layout
 end
 
-get '/sign_up' do
-  erb :sign_up
-end
-
-get '/sign_in' do
-  erb :sign_in
-end
-
 post '/new_user_session' do
   @email = params[:email]
   @password = params[:password]
@@ -72,8 +66,9 @@ end
 
 # Test routes. TODO: DELETE
 
-get '/clear_session' do
+get '/sign_out' do
   session.clear
+  redirect to '/landing'
 end
 
 get '/drop_tables' do
@@ -83,7 +78,35 @@ get '/drop_tables' do
     DELETE from users
   SQL
 
+  @db.execute <<-SQL
+    DELETE from users
+  SQL
+
   redirect to '/landing'
+end
+
+# Rout for desktop javascript experiment
+
+get '/location_list' do
+  @result = MakerSpots::ShowAllLocations.run
+  erb :desktop_layout
+end
+
+# Admin Location Log
+
+get '/add_location' do
+  erb :add_location
+end
+
+post '/add_location' do
+  data = {
+    name: params[:name],
+    description: params[:description],
+    phone: params[:phone],
+    address: params[:address]
+  }
+  location = MakerSpots::AddNewLocation.run(data)
+  redirect to '/add_location'
 end
 
 # Helper

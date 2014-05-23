@@ -22,9 +22,4 @@ class MakerSpots::SignInUser
 		url += "?s=#{opts[:size] || 80}"
 		url += "&d=#{opts[:default] || 'mm'}"
 	end
-
-	def my_hook
-		binding.pry
-		return File.expand_path(File.dirname(__FILE__))
-	end
 end

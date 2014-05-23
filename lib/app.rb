@@ -83,7 +83,7 @@ get '/drop_tables' do
     DELETE from users
   SQL
 
-  redirect to '/sign_up'
+  redirect to '/landing'
 end
 
 # Helper

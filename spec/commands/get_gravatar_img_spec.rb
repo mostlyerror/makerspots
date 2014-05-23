@@ -8,7 +8,7 @@ describe 'GetGravatar' do
 
   describe 'run' do
     it 'returns a hash with gravatar img url' do
-      img_url = "http://www.gravatar.com/avatar/52bad6c2e5375f389955d89d7f559a7b.png?s=80&d=mm"
+      img_url = "http://www.gravatar.com/avatar/52bad6c2e5375f389955d89d7f559a7b.png?s=80&d=http://imgur.com/lKf9ONN"
       expect(MakerSpots::GetGravatar.run('benjamintpoon@gmail.com')[:gravatar]).to eq(img_url)
     end
 

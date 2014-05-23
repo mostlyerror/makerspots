@@ -3,11 +3,10 @@ require 'pry-debugger'
 require 'sinatra/reloader'
 require_relative 'makerspots.rb'
 
-set :bind, '0.0.0.0'
-
 enable :sessions
 
 get '/' do
+  # Render the home page if the user is signed in
   if session[:user]
     # Get all locations from database
     @locations = MakerSpots::ShowFeed.run
@@ -69,6 +68,29 @@ post '/new_user_session' do
     session[:error] = @result[:error]
     redirect to '/landing'
   end
-# Signing in and signing up routing
 end
 
+# Test routes. TODO: DELETE
+
+get '/clear_session' do
+  session.clear
+end
+
+get '/drop_tables' do
+  @db = SQLite3::Database.new "makerspots.db"
+
+  @db.execute <<-SQL
+    DELETE from users
+  SQL
+
+  redirect to '/sign_up'
+end
+
+# Helper
+
+def name_cleaner(string)
+  # Input string (location.name)
+  # Output is url friendly version of name. Must match image filename in images/locations
+  cleaned = string.gsub(' ', '-')
+  cleaned.downcase!
+end

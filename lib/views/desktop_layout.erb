@@ -1,8 +1,13 @@
 <div class="container">
+<!-- Start of Locations loop -->
+<% i = 0 %>
+<% @result[:locations].each do |location, checkins| %>
   <div class="row">
-    <div class="image col-sm-6 col-md-6 col-lg-6" style="background-image: url('../images/holder/royalblue.jpg')"></div>
+<% if i.even? %>
+    <div class="image col-sm-6 col-md-6 col-lg-6" style="background-image: url('../images/locations/<%= name_cleaner(location.name) %>.jpg')"></div>
+
     <div class="about col-sm-6 col-md-6 col-lg-6">
-      <div class="title">ROYAL BLUE GROCERY</div>
+      <div class="title"><%= location.name %></div>
       <div class="image-circles">
         <div class="image-holder"></div>
         <div class="image-holder"></div>
@@ -11,34 +16,40 @@
       </div>
       <button>ATTEND</button>
     </div>
+
+<% else %>
+
+    <div class="about col-sm-6 col-md-6 col-lg-6">
+      <div class="title"><%= location.name %></div>
+      <div class="image-circles">
+        <div class="image-holder"></div>
+        <div class="image-holder"></div>
+        <div class="image-holder"></div>
+        <div class="image-holder"></div>
+      </div>
+      <button>ATTEND</button>
+    </div>
+
+  <div class="image col-sm-6 col-md-6 col-lg-6" style="background-image: url('../images/locations/<%= name_cleaner(location.name) %>.jpg')"></div>
+
+<% end %>
     <div class="col-md-12 description">
       <div class="contact">
         <span class="heading">Phone:</span>
-        <span class="context">512 555-5555</span>
+        <span class="context"><%= location.phone %></span>
       </div>
+      <% if location.address %>
       <div class="contact">
         <span class="heading">Address:</span>
-        <span class="context">6969 Congress Ave.</span>
+        <span class="context"><%= location.address %></span>
       </div>
+      <% end %>
       <!-- <span class="about-drop">ABOUT:</span> -->
       <span class="info">
-        Royal Blue Grocery is a compact urban market with several locations in the heart of downtown Austin, Texas. The stores were created specifically for Austin and the people who live, work, and play downtown. Each store is different from the next, tailored to the neighborhood it serves and the people who frequent it every day. Royal Blue offers a little bit of everything, from the freshly prepared grab-and-go offerings, to conventional grocery and convenience items.
+        <%= location.description %>
       </span>
     </div>
   </div>
-
-  <div class="row">
-    <div class="about col-sm-6 col-md-6 col-lg-6">
-      <div class="title" >ROYAL BLUE GROCERY</div>
-      <div class="image-circles">
-        <div class="image-holder"></div>
-        <div class="image-holder"></div>
-        <div class="image-holder"></div>
-        <div class="image-holder"></div>
-      </div>
-      <button>ATTEND</button>
-    </div>
-    <div class="image col-sm-6 col-md-6 col-lg-6" style="background-image: url('../images/holder/whollycow.jpg')"></div>
-
-  </div>
+<% i += 1 %>
+<% end %> <!-- End of locations loop -->
 </div>

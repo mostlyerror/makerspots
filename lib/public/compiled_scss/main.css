@@ -68,10 +68,7 @@
 
 /* line 5, ../../scss/desktop_style.scss */
 .about, .image {
-  height: 25rem;
-  border: 2px solid #c7c9cb;
-  border-top: 1px solid #c7c9cb;
-  border-bottom: 1px solid #c7c9cb; }
+  height: 25rem; }
 
 /* line 11, ../../scss/desktop_style.scss */
 .about {

@@ -20,6 +20,15 @@ describe 'SignInUser' do
     end
   end
 
+  describe 'get_gravatar_img' do
+    it 'returns a gravatar img url' do
+      data = {name: 'benjamin', email: 'benjamintpoon@gmail.com', password: 'doge'}
+      grav_user = MakerSpots.db.create_user(data)
+      img_url = "http://www.gravatar.com/avatar/52bad6c2e5375f389955d89d7f559a7b.png?s=100&d=mm"
+      expect(MakerSpots::SignInUser.get_gravatar_img(grav_user.email)).to eq(img_url)
+    end
+  end
+
   describe 'with invalid credentials' do
     it 'returns an error message' do
       result = MakerSpots::SignInUser.run('lionel', 'notreal')

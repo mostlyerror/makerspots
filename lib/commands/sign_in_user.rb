@@ -10,7 +10,7 @@ class MakerSpots::SignInUser
       user: user,
       message: "#{user.name} signed in."
     }
-    gravatar = MakerSpots::GetGravatar.run(email, {default: 'mm'})
+    gravatar = MakerSpots::GetGravatar.run(email)
     gravatar[:success?] ? result.merge(gravatar) : result
   end
   

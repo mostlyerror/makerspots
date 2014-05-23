@@ -87,19 +87,6 @@ get '/sign_out' do
   redirect to '/landing'
 end
 
-get '/drop_tables' do
-  @db = SQLite3::Database.new "makerspots.db"
-
-  @db.execute <<-SQL
-    DELETE from users
-  SQL
-  #  @db.execute <<-SQL
-  #   DELETE from locations
-  # SQL
-
-  redirect to '/landing'
-end
-
 # Rout for desktop javascript experiment
 
 get '/location_list' do

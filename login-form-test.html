@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>login form test</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		@-webkit-keyframes move-up {
+			0%  	{ bottom: 0px; opacity: .9;}     
+			100%  { bottom: 250px; opacity: 0; }
+		}
+		@-webkit-keyframes move-down{
+			0%  	{ bottom: 250px; }     
+			100%  { bottom: 0px; }
+		}
+		.move-up-instant {
+			-webkit-animation: move-up 0s swing;
+			-webkit-animation-fill-mode: forwards;
+		}
+		.move-up {
+			-webkit-animation: move-up 0.3s swing;
+			-webkit-animation-fill-mode: forwards;
+		}
+		.move-down {
+			-webkit-animation: move-down 0.3s;
+		}
+		body { 
+			padding-top: 150px;
+		}
+		form {
+			padding: 10px;	
+		}
+		form span { 
+			font-size: 12px; 
+		}
+		form input {
+			display: block;
+			margin: 10px;
+			padding: 2px;
+			width: 50%;
+		}
+		#sign-in-form { 
+			position: relative;
+			background-color: lightblue; 
+			height: 250px;
+		}
+		#sign-up-form { 
+			position: relative;
+			background-color: lightred; 
+			height: 250px;
+		}
+		.container { 
+			width: 45%; 
+			overflow: hidden; 
+			background-color: aliceblue;
+			margin: 0 auto;
+			height: 250px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div id="sign-in-form" style="background: lightblue;">
+				<h1>Sign-In</h1>
+				<form action="#" method="post">
+					<input type="text" name="email" placeholder="email">
+					<input type="text" name="password" placeholder="password">
+					<br>
+					<span>Don't have an account? <a id="sign-up-link" href="#">Sign-Up</a></span>
+				</form>
+		</div>
+		<div id="sign-up-form" style="background: lightpink;">
+				<h1>Sign-Up</h1>
+				<form action="#" method="post">
+					<input type="text" name="name" placeholder="name">
+					<input type="text" name="email" placeholder="email">
+					<input type="text" name="password" placeholder="password">
+					<br>
+					<span>Already have an account? <a id="sign-in-link" href="#">Sign-In</a></span>
+				</form>
+		</div>
+	</div>
+
+<script type="text/javascript">	
+	$(document).ready(function() {
+		// user loads page, display SIGNUP;
+			$("#sign-in-form, #sign-up-form").addClass('move-up-instant');	
+
+		$("#sign-up-link").click(function(event) {
+			$("#sign-in-form, #sign-up-form").addClass('move-up');	
+			$("#sign-in-form, #sign-up-form").removeClass('move-down');
+		});
+		$("#sign-in-link").click(function(event) {
+			$("sign-in-form").show();
+			$("#sign-in-form, #sign-up-form").addClass('move-down');
+			$("#sign-in-form, #sign-up-form").removeClass('move-up move-up-instant');
+		});
+
+	});
+</script>
+</body>
+</html>

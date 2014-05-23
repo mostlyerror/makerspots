@@ -14,9 +14,13 @@ class MakerSpots::SignInUser
   	}
   end
 
-	def self.get_gravatar_img(email, filetype='png', size=100, default='mm')
+  # more info: https://en.gravatar.com/site/implement/images/
+  # if opts[:default] is set, the image will not be resized, even with opts[:size!]
+	def self.get_gravatar_img(email, opts={})
 		hash = Digest::MD5.hexdigest(email.downcase)
-		"http://www.gravatar.com/avatar/#{hash}.#{filetype}?s=#{size}&d=#{default}"
+		url = "http://www.gravatar.com/avatar/#{hash}.#{opts[:filetype] || 'png'}"
+		url += "?s=#{opts[:size] || 80}"
+		url += "&d=#{opts[:default] || 'mm'}"
 	end
 
 	def my_hook

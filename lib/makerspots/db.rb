@@ -50,7 +50,6 @@ class MakerSpots::DB
         VALUES ($1,$2,$3,$4) RETURNING id, name, description, phone, address",
         [data[:name], data[:description], data[:phone], data[:address]]
       )
-    binding.pry
     data_hash = {
       id: data[0]['id'],
       name: data[0]['name'],
@@ -66,17 +65,17 @@ class MakerSpots::DB
     # Input: id[integer]
     # Output: Location object
 
-    data = @db.exec(
+    data = @db.exec_params(
       "SELECT * FROM locations
-      WHERE id = ?", id
-    ).flatten
+      WHERE id = $1", [id]
+    )
 
     data_hash = {
-      id: data[0],
-      name: data[1],
-      description: data[2],
-      phone: data[3],
-      address: data[4]
+      id: data[0]['id'],
+      name: data[0]['name'],
+      description: data[0]['description'],
+      phone: data[0]['phone'],
+      address: data[0]['address']
     }
 
     build_location(data_hash)
@@ -90,14 +89,14 @@ class MakerSpots::DB
       "SELECT * FROM locations"
     )
 
-    # Data is array of arrays, l_data is inner array, contains location attributes
-    data.each do |l_data|
+    # Data is an array of location data in hash format
+    data.each do |location|
       data_hash = {
-        id: l_data[0],
-        name: l_data[1],
-        description: l_data[2],
-        phone: l_data[3],
-        address: l_data[4]
+        id: location['id'],
+        name: location['name'],
+        description: location['description'],
+        phone: location['phone'],
+        address: location['address']
       }
       locations_holder << build_location(data_hash)
     end

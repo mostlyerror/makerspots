@@ -75,14 +75,14 @@ describe 'database' do
     end
 
     after(:each) do
-      @db = SQLite3::Database.new "makerspots.db"
-      @db.execute <<-SQL
+      @db = PG.connect( dbname: 'makerspotsdb' )
+      @db.exec <<-SQL
         DELETE from locations
       SQL
     end
   end
 
-  describe 'users' do
+  describe 'users', pending: true do
     before(:each) do
       @user = MakerSpots.db.create_user(
         name: "david",
@@ -119,14 +119,14 @@ describe 'database' do
     end
 
     after(:each) do
-      @db = SQLite3::Database.new "makerspots.db"
-      @db.execute <<-SQL
+      @db = PG.connect( dbname: 'makerspotsdb' )
+      @db.exec <<-SQL
         DELETE from users
       SQL
     end
   end
 
-  describe 'checkins' do
+  describe 'checkins', pending: true do
     before(:each) do
       @user = MakerSpots.db.create_user(
         name: "david",
@@ -213,14 +213,14 @@ describe 'database' do
     end
 
     after(:each) do
-      @db = SQLite3::Database.new "makerspots.db"
-      @db.execute <<-SQL
+      @db = PG.connect( dbname: 'makerspotsdb' )
+      @db.exec <<-SQL
         DELETE from users
       SQL
-      @db.execute <<-SQL
+      @db.exec <<-SQL
         DELETE from locations
       SQL
-      @db.execute <<-SQL
+      @db.exec <<-SQL
         DELETE from checkins
       SQL
     end

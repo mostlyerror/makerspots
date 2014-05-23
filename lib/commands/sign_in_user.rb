@@ -18,4 +18,9 @@ class MakerSpots::SignInUser
 		hash = Digest::MD5.hexdigest(email.downcase)
 		"http://www.gravatar.com/avatar/#{hash}.#{filetype}?s=#{size}&d=#{default}"
 	end
+
+	def my_hook
+		binding.pry
+		return File.expand_path(File.dirname(__FILE__))
+	end
 end

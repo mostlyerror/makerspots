@@ -6,10 +6,17 @@ require_relative 'makerspots.rb'
 enable :sessions
 
 get '/' do
+  # Render the home page if the user is signed in
   if session[:user]
     # Get all locations from database
-    @locations = MakerSpots::ShowFeed.run
-    erb :desktop_layout
+    if MakerSpots.db.get_location(1).id
+      @result = MakerSpots::ShowFeed.run
+      erb :desktop_layout
+    else
+      # Databse is empty. Whoops
+    end
+
+  # Else send them to sign_in page
   else
     redirect to '/sign_in'
   end
@@ -22,12 +29,11 @@ post '/' do
   @email = params[:email]
   @password = params[:password]
   @result = MakerSpots::SignUpUser.run(name: @name, email: @email, password: @password)
-
   # Sign in user automatically if successful signup
-  if @result[:success]
+  if @result[:success?]
     @result = MakerSpots::SignInUser.run(@name, @email)
     # Redirect to root if successful
-    if @result[:success]
+    if @result[:success?]
       session[:user] = @result[:user]
       redirect '/'
     # Send back to sign_in page if sign in error.
@@ -66,7 +72,27 @@ post '/new_user_session' do
   end
 end
 
+# Test routes. TODO: DELETE
+
 get '/clear_session' do
   session.clear
 end
 
+get '/drop_tables' do
+  @db = SQLite3::Database.new "makerspots.db"
+
+  @db.execute <<-SQL
+    DELETE from users
+  SQL
+
+  redirect to '/sign_up'
+end
+
+# Helper
+
+def name_cleaner(string)
+  # Input string (location.name)
+  # Output is url friendly version of name. Must match image filename in images/locations
+  cleaned = string.gsub(' ', '-')
+  cleaned.downcase!
+end

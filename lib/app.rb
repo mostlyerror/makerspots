@@ -64,6 +64,9 @@ post '/new_user_session' do
     session[:error] = @result[:error]
     redirect to '/sign_in'
   end
->>>>>>> Signing in and signing up routing
+end
+
+get '/clear_session' do
+  session.clear
 end
 

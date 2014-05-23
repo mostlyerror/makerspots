@@ -49,9 +49,17 @@ end
 
 get '/checkin/:id' do
   @loc_id = params[:id]
+  binding.pry
   @result = MakerSpots::CheckinUser.run(session[:user].id, @loc_id)
   if @result[:success?]
     session[:result] = @result
+    redirect to '/'
+  end
+end
+
+get '/checkout' do
+  @result = MakerSpots::CheckOutUser.run(session[:user].id)
+  if @result[:success?]
     redirect to '/'
   end
 end

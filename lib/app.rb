@@ -11,7 +11,7 @@ get '/' do
   # Render the home page if the user is signed in
   if session[:user]
     # Get all locations from database
-    @locations = MakerSpots::ShowFeed.run
+    @result = MakerSpots::ShowFeed.run
     erb :desktop_layout
   else
     redirect to '/landing'
@@ -47,6 +47,15 @@ post '/' do
   end
 end
 
+get '/checkin/:id' do
+  @loc_id = params[:id]
+  @result = MakerSpots::CheckinUser.run(session[:user].id, @loc_id)
+  if @result[:success?]
+    session[:result] = @result
+    redirect to '/'
+  end
+end
+
 get '/landing' do
   erb :landing, :layout => :landing_layout
 end
@@ -73,10 +82,6 @@ end
 
 get '/drop_tables' do
   @db = SQLite3::Database.new "makerspots.db"
-
-  @db.execute <<-SQL
-    DELETE from users
-  SQL
 
   @db.execute <<-SQL
     DELETE from users

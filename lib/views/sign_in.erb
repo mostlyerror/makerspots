@@ -1,0 +1,21 @@
+<% if session[:error] %>
+  <%= session[:error] %>
+  <% session[:error] = nil %>
+<% end %>
+<form action = '/new_user_session' method = "post">
+
+  <div>
+    <label for= 'email'>Email</label>
+    <input type = 'text' id="email" name="email"/>
+  </div>
+
+  <div>
+    <label for= 'password'>Password</label>
+    <input type = 'text' id="password" name="password"/>
+  </div>
+
+  <div>
+    <input type="submit" value="Sign In">
+  </div>
+
+</form>

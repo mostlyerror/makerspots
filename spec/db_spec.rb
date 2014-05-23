@@ -154,8 +154,8 @@ describe 'database' do
       expect(@checkin.created_at).not_to eq nil
     end
 
-    it 'retrieves a checkin object by checkin id' do
-      checkin = MakerSpots.db.get_checkin(@checkin.id)
+    it 'retrieves a checkin object by user id' do
+      checkin = MakerSpots.db.get_checkins_by_user(@user.id)
 
       expect(checkin).to be_a(Checkin)
       expect(checkin.id).to eq @checkin.id
@@ -188,7 +188,7 @@ describe 'database' do
         )
 
       # Set checked_in to 0
-      checkin5 = MakerSpots.db.check_out(checkin5.id)
+      checkin5 = MakerSpots.db.checkout(checkin5.id)
 
       checkins = MakerSpots.db.get_checkins_by_location(@location.id)
 
@@ -205,7 +205,7 @@ describe 'database' do
     end
 
     it 'updates checkin.checked_in by id' do
-      checkin = MakerSpots.db.check_out(@checkin.id)
+      checkin = MakerSpots.db.checkout(@checkin.id)
 
       expect(checkin).to be_a(Checkin)
       expect(checkin.id).to eq @checkin.id

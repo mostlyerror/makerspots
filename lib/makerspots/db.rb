@@ -54,7 +54,7 @@ class MakerSpots::DB
 
     data = @db.execute(
       "SELECT * FROM locations where id = last_insert_rowid()"
-    ).flatten!
+    ).flatten
 
     data_hash = {
       id: data[0],
@@ -74,7 +74,7 @@ class MakerSpots::DB
     data = @db.execute(
       "SELECT * FROM locations
       WHERE id = ?", id
-    ).flatten!
+    ).flatten
 
     data_hash = {
       id: data[0],
@@ -126,7 +126,7 @@ class MakerSpots::DB
 
     data = @db.execute(
       "SELECT * FROM users where id = last_insert_rowid()"
-    ).flatten!
+    ).flatten
 
     data_hash = {
       id: data[0],
@@ -144,7 +144,7 @@ class MakerSpots::DB
 
     data = @db.execute(
       "SELECT * FROM users where id = ?", id
-      ).flatten!
+      ).flatten
 
     data_hash = {
       id: data[0],
@@ -163,7 +163,9 @@ class MakerSpots::DB
 
     data = @db.execute(
       "SELECT * FROM users where email = ?", email
-      ).flatten!
+      ).flatten
+
+    return false if data.empty?
 
     data_hash = {
       id: data[0],
@@ -195,7 +197,7 @@ class MakerSpots::DB
 
     data = @db.execute(
         "SELECT * FROM checkins where id = last_insert_rowid()"
-      ).flatten!
+      ).flatten
 
     data_hash = {
       id: data[0],
@@ -208,13 +210,17 @@ class MakerSpots::DB
     build_checkin(data_hash)
   end
 
-  def get_checkin(id)
+  def get_checkins_by_user(user_id)
     # Input: id[integer]
-    # Output: Checkin object
+    # Output: Active checkin object
 
+    # Only select active checkins for a user
     data = @db.execute(
-      "SELECT * FROM checkins where id = ?", id
-    ).flatten!
+      "SELECT * FROM checkins
+      WHERE user_id = ?
+      AND checked_in = ?
+      ", user_id, 1
+    ).flatten
 
     data_hash = {
       id: data[0],
@@ -255,7 +261,7 @@ class MakerSpots::DB
     checkins_holder
   end
 
-  def check_out(id)
+  def checkout(id)
     # Input: id[integer]
     # Output: Checkin object
     # This method should run on any user checkins that have a checked_in value of 1 before creating a new checkin
@@ -270,8 +276,7 @@ class MakerSpots::DB
 
     data = @db.execute(
       "SELECT * FROM checkins where id = ?", id
-    ).flatten!
-
+    ).flatten
 
     data_hash = {
       id: data[0],

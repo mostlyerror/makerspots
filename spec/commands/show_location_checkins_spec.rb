@@ -50,7 +50,7 @@ describe 'ShowCheckinsByLocation' do
   end
 
   it 'does not retrive inactive checkins' do
-    @checkin5 = MakerSpots.db.check_out(@checkin5.id)
+    @checkin5 = MakerSpots.db.checkout(@checkin5.id)
     result = MakerSpots::ShowCheckinsByLocation.run(@location1.id)
     expect(result[:checkins].length).to eq(2)
   end

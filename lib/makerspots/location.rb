@@ -8,4 +8,11 @@ class MakerSpots::Location
     @phone = params[:phone]
     @address = params[:address]
   end
+
+  # def phone
+  #   @phone = @phone.to_s
+  #   @phone = @phone.split("")
+  #   "(#{@phone[0..2]}) #{@phone[3..6]}-#{@phone[7..-1]}"
+  # end
+
 end

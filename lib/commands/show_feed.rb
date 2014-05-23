@@ -11,7 +11,7 @@ class MakerSpots::ShowFeed
 
     return { success?: false, error: "Error finding locations(Really bad error)" } if location_checkins_hash.empty?
 
-    {
+    return {
       success?: true,
       locations: location_checkins_hash,
       message: "Return of locations is successful."

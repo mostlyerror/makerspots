@@ -1,0 +1,23 @@
+.nav-color {
+  background: $dark-color;
+}
+#brand-text {
+  @include nav-text;
+}
+#drop-nav {
+  @include nav-text;
+}
+#drop-menu {
+  background-color: $dark-color;
+  li {
+    a {
+        @include nav-text;
+    }
+  }
+}
+#sign {
+  @include nav-text;
+}
+#spots {
+  font-family: openLight;
+}

@@ -1,0 +1,10 @@
+@mixin nav-text {
+  font-size: 3rem;
+  font-family: openBold;
+  text-decoration: none;
+  color: white;
+  &:hover {
+    text-decoration: none;
+    color: $blue;
+  }
+}

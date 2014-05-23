@@ -1,0 +1,79 @@
+.about, .image {
+  height: 25rem;
+  border: 2px solid $light-grey
+}
+.about {
+  font-family: openBold;
+  font-size: 4.5rem;
+  text-align: center;
+  .title {
+    height: 33%;
+  }
+  .image-circles {
+    max-width: 40rem;
+    margin: 0 auto;
+    height: 33%;
+    .image-holder {
+      opacity: .5;
+      border-radius: 100%;
+      height: 8rem;
+      width: 8rem;
+      background-color: $light-grey;
+      display: inline-block;
+      float: left;
+      margin-right: 2rem;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+  button {
+    background-color: $blue;
+    font-size: 3rem;
+    border: none;
+    color: white;
+    width: 90%;
+    &:hover {
+      background-color: $darker-blue;
+    }
+  }
+}
+.image {
+  // background-color: red;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.description {
+  border-left: 2px solid $light-grey;
+  border-right: 2px solid $light-grey;
+  padding: 4rem;
+  span {
+    font-family: openRegular;
+    font-size: 1.5rem;
+  }
+  .heading {
+    font-family: openBold;
+  }
+  .about-drop {
+    clear: both;
+    font-family: openBold;
+    font-size: 2.5rem;
+  }
+  .info {
+    display: block;
+    clear: both;
+    margin-top: 0;
+  }
+  .contact {
+    float: left;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .about .title {
+    font-size: 0.75em;
+  }
+}

@@ -1,0 +1,55 @@
+<div class="container">
+<!-- Start of Locations loop -->
+<% i = 0 %>
+<% @result[:locations].each do |location, checkins| %>
+  <div class="row">
+<% if i.even? %>
+    <div class="image col-sm-6 col-md-6 col-lg-6" style="background-image: url('../images/locations/<%= name_cleaner(location.name) %>.jpg')"></div>
+
+    <div class="about col-sm-6 col-md-6 col-lg-6">
+      <div class="title"><%= location.name %></div>
+      <div class="image-circles">
+        <div class="image-holder"></div>
+        <div class="image-holder"></div>
+        <div class="image-holder"></div>
+        <div class="image-holder"></div>
+      </div>
+      <button>ATTEND</button>
+    </div>
+
+<% else %>
+
+    <div class="about col-sm-6 col-md-6 col-lg-6">
+      <div class="title"><%= location.name %></div>
+      <div class="image-circles">
+        <div class="image-holder"></div>
+        <div class="image-holder"></div>
+        <div class="image-holder"></div>
+        <div class="image-holder"></div>
+      </div>
+      <button>ATTEND</button>
+    </div>
+
+  <div class="image col-sm-6 col-md-6 col-lg-6" style="background-image: url('../images/locations/<%= name_cleaner(location.name) %>.jpg')"></div>
+
+<% end %>
+    <div class="col-md-12 description">
+      <div class="contact">
+        <span class="heading">Phone:</span>
+        <span class="context"><%= location.phone %></span>
+      </div>
+      <% if location.address %>
+      <div class="contact">
+        <span class="heading">Address:</span>
+        <span class="context"><%= location.address %></span>
+      </div>
+      <% end %>
+      <!-- <span class="about-drop">ABOUT:</span> -->
+      <span class="info">
+        <%= location.description %>
+      </span>
+    </div>
+  </div>
+<% i += 1 %>
+<% end %> <!-- End of locations loop -->
+</div>

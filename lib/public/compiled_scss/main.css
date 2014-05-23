@@ -141,6 +141,55 @@
   /* line 76, ../../scss/desktop_style.scss */
   .about .title {
     font-size: 0.75em; } }
-/* line 13, ../../scss/main.scss */
+/* line 1, ../../scss/landing.scss */
+.wrapper {
+  with: 100%;
+  height: 125rem;
+  padding-top: 15rem;
+  background-color: #333333; }
+  /* line 7, ../../scss/landing.scss */
+  .wrapper .form-container input {
+    height: 5rem;
+    width: 96%; }
+  /* line 11, ../../scss/landing.scss */
+  .wrapper .form-container input[type=text], .wrapper .form-container input[type=password] {
+    padding-left: 2rem;
+    margin-bottom: 1rem; }
+  /* line 15, ../../scss/landing.scss */
+  .wrapper .form-container input[type=submit] {
+    border: none;
+    background-color: #599ec8;
+    color: white;
+    font-family: openBold;
+    font-size: 3rem; }
+  /* line 22, ../../scss/landing.scss */
+  .wrapper .form-container .header {
+    font-family: openBold;
+    font-size: 8rem;
+    color: #599ec8; }
+
+/* line 34, ../../scss/landing.scss */
+.signin {
+  display: none; }
+
+/* line 1, ../../scss/messages_style.scss */
+.message {
+  height: 5rem;
+  width: 40rem;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 1rem;
+  font-family: openBold;
+  font-size: 2rem;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px; }
+  /* line 13, ../../scss/messages_style.scss */
+  .message.error {
+    color: white;
+    background-color: #fb883d; }
+
+/* line 17, ../../scss/main.scss */
 body {
   background-color: #f7f7f7; }

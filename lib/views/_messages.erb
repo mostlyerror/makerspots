@@ -1,0 +1,11 @@
+<% if session[:error] %>
+  <div class="message error"><%= session[:error] %></div>
+  <% session[:error] = nil %>
+<% end %>
+
+
+<!-- <% if session[:singup_error] %>
+    <script> $('.signin').css({'display' : "none"}) </script>
+  <% else %>
+    <script> $('.signup').css({'display' : "none"}) </script>
+  <% end %> -->

@@ -9,6 +9,7 @@ set :bind, "0.0.0.0"
 
 get '/' do
   # Render the home page if the user is signed in
+  # Otherwise send them to the sign in page
   if session[:user]
     # Get all locations from database
     @result = MakerSpots::ShowFeed.run
@@ -24,7 +25,13 @@ post '/' do
   @name = params[:name]
   @email = params[:email]
   @password = params[:password]
-  @result = MakerSpots::SignUpUser.run(name: @name, email: @email, password: @password)
+  @result =
+    MakerSpots::SignUpUser.run(
+      name: @name,
+      email: @email,
+      password: @password
+    )
+
   # Sign in user automatically if successful signup
   if @result[:success?]
     @result = MakerSpots::SignInUser.run(@email, @password)

@@ -1,3 +1,7 @@
+.desktop-contain {
+  margin-top: 7rem;
+}
+
 .about, .image {
   height: 25rem;
   border: 2px solid $light-grey;
@@ -59,10 +63,12 @@
 
 .description {
   display: none;
-  border-left: 2px solid $light-grey;
-  border-right: 2px solid $light-grey;
-  border-bottom: 2px solid $light-grey;
+  background-color: $lighter-blue;
+  // border-left: 2px solid $light-grey;
+  // border-right: 2px solid $light-grey;
+  // border-bottom: 2px solid $light-grey;
   padding: 4rem;
+  color: white;
   span {
     font-family: openRegular;
     font-size: 1.5rem;

@@ -5,6 +5,6 @@ class MakerSpots::User
     @id = params[:id]
     @name = params[:name]
     @email = params[:email]
-    @password = params[:password]
+    @password = params[:password].to_s
   end
 end

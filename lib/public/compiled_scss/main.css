@@ -9,7 +9,7 @@
   src: url(../custom_fonts/Open_Sans/OpenSans-Bold.ttf); }
 /* line 1, ../../scss/navbar_override.scss */
 .nav-color {
-  background: #333333; }
+  background: #7fb4d5; }
 
 /* line 4, ../../scss/navbar_override.scss */
 #brand-text {
@@ -63,26 +63,30 @@
   font-family: openLight; }
 
 /* line 1, ../../scss/desktop_style.scss */
+.desktop-contain {
+  margin-top: 7rem; }
+
+/* line 5, ../../scss/desktop_style.scss */
 .about, .image {
   height: 25rem;
   border: 2px solid #c7c9cb;
   border-top: 1px solid #c7c9cb;
   border-bottom: 1px solid #c7c9cb; }
 
-/* line 7, ../../scss/desktop_style.scss */
+/* line 11, ../../scss/desktop_style.scss */
 .about {
   font-family: openBold;
   font-size: 4.5rem;
   text-align: center; }
-  /* line 11, ../../scss/desktop_style.scss */
+  /* line 15, ../../scss/desktop_style.scss */
   .about .title {
     height: 33%; }
-  /* line 14, ../../scss/desktop_style.scss */
+  /* line 18, ../../scss/desktop_style.scss */
   .about .image-circles {
     max-width: 40rem;
     margin: 0 auto;
     height: 33%; }
-    /* line 18, ../../scss/desktop_style.scss */
+    /* line 22, ../../scss/desktop_style.scss */
     .about .image-circles .image-holder {
       opacity: .5;
       border-radius: 100%;
@@ -92,68 +96,67 @@
       display: inline-block;
       float: left;
       margin-right: 2rem; }
-      /* line 27, ../../scss/desktop_style.scss */
+      /* line 31, ../../scss/desktop_style.scss */
       .about .image-circles .image-holder:hover {
         opacity: 1; }
-  /* line 32, ../../scss/desktop_style.scss */
+  /* line 36, ../../scss/desktop_style.scss */
   .about button {
     background-color: #599ec8;
     font-size: 3rem;
     border: none;
     color: white;
     width: 90%; }
-    /* line 38, ../../scss/desktop_style.scss */
+    /* line 42, ../../scss/desktop_style.scss */
     .about button:hover {
       background-color: #3b86b3; }
-    /* line 41, ../../scss/desktop_style.scss */
+    /* line 45, ../../scss/desktop_style.scss */
     .about button.attending {
       background-color: #fb883d; }
-    /* line 44, ../../scss/desktop_style.scss */
+    /* line 48, ../../scss/desktop_style.scss */
     .about button a {
       text-decoration: none;
       color: white; }
-    /* line 48, ../../scss/desktop_style.scss */
+    /* line 52, ../../scss/desktop_style.scss */
     .about button a:hover {
       text-decoration: none;
       color: white; }
 
-/* line 54, ../../scss/desktop_style.scss */
+/* line 58, ../../scss/desktop_style.scss */
 .image {
   background-size: cover;
   cursor: pointer; }
 
-/* line 60, ../../scss/desktop_style.scss */
+/* line 64, ../../scss/desktop_style.scss */
 .description {
   display: none;
-  border-left: 2px solid #c7c9cb;
-  border-right: 2px solid #c7c9cb;
-  border-bottom: 2px solid #c7c9cb;
-  padding: 4rem; }
-  /* line 66, ../../scss/desktop_style.scss */
+  background-color: #7fb4d5;
+  padding: 4rem;
+  color: white; }
+  /* line 72, ../../scss/desktop_style.scss */
   .description span {
     font-family: openRegular;
     font-size: 1.5rem; }
-  /* line 70, ../../scss/desktop_style.scss */
+  /* line 76, ../../scss/desktop_style.scss */
   .description .heading {
     font-family: openBold; }
-  /* line 73, ../../scss/desktop_style.scss */
+  /* line 79, ../../scss/desktop_style.scss */
   .description .about-drop {
     clear: both;
     font-family: openBold;
     font-size: 2.5rem; }
-  /* line 78, ../../scss/desktop_style.scss */
+  /* line 84, ../../scss/desktop_style.scss */
   .description .info {
     display: block;
     clear: both;
     margin-top: 0; }
-  /* line 83, ../../scss/desktop_style.scss */
+  /* line 89, ../../scss/desktop_style.scss */
   .description .contact {
     float: left;
     margin-right: 2rem;
     margin-bottom: 2rem; }
 
 @media (max-width: 1200px) {
-  /* line 91, ../../scss/desktop_style.scss */
+  /* line 97, ../../scss/desktop_style.scss */
   .about .title {
     font-size: 0.75em; } }
 /* line 1, ../../scss/landing.scss */

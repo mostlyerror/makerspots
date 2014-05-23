@@ -10,7 +10,7 @@ get '/' do
   # Render the home page if the user is signed in
   if session[:user]
     # Get all locations from database
-    @locations = MakerSpots::ShowFeed.run
+    @result = MakerSpots::ShowFeed.run
     erb :desktop_layout
   else
     redirect to '/landing'
@@ -43,6 +43,15 @@ post '/' do
     session[:error] = @result[:error]
     session[:signup_error] = true
     redirect '/landing'
+  end
+end
+
+get '/checkin/:id' do
+  @loc_id = params[:id]
+  @result = MakerSpots::CheckinUser.run(session[:user].id, @loc_id)
+  if @result[:success?]
+    session[:result] = @result
+    redirect to '/'
   end
 end
 

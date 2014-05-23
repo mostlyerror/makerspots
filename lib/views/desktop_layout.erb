@@ -14,7 +14,16 @@
         <div class="image-holder"></div>
         <div class="image-holder"></div>
       </div>
-      <button>ATTEND</button>
+      <!-- Logic to swap checkin/checkout buttons depending on user checkin status -->
+      <% if checkins.nil? %>
+        <button><a href="/checkin/<%= location.id %>">ATTEND</a></button>
+      <% else %>
+        <% if checkins.any?{|checkin| checkin.user_id == session[:user].id } %>
+        <button><a href="/checkout/<%= location.id %>">NOT ATTENDING</a></button>
+        <% else %>
+        <button><a href="/checkin/<%= location.id %>">ATTEND</a></button>
+        <% end %>
+      <% end %>
     </div>
 
 <% else %>
@@ -27,7 +36,15 @@
         <div class="image-holder"></div>
         <div class="image-holder"></div>
       </div>
-      <button>ATTEND</button>
+      <% if checkins.nil? %>
+        <button><a href="/checkin/<%= location.id %>">ATTEND</a></button>
+      <% else %>
+        <% if checkins.any?{|checkin| checkin.user_id == session[:user].id } %>
+        <button><a href="/checkout/<%= location.id %>">NOT ATTENDING</a></button>
+        <% else %>
+        <button><a href="/checkin/<%= location.id %>">ATTEND</a></button>
+        <% end %>
+      <% end %>
     </div>
 
   <div class="image col-sm-6 col-md-6 col-lg-6" style="background-image: url('../images/locations/<%= name_cleaner(location.name) %>.jpg')"></div>

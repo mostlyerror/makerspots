@@ -15,7 +15,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right drop-nav" >
-        <li class="dropdown">
+        <!--<li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="drop-nav">CATEGORIES <b class="caret"></b></a>
           <ul class="dropdown-menu" id="drop-menu">
             <li><a href="#">LUNCH</a></li>
@@ -23,9 +23,12 @@
             <li><a href="#">STUDY</a></li>
             <li><a href="#">NIGHT LIFE</a></li>
           </ul>
-        </li>
-        <li>Sign In</li>
-        <li><!-- Gravatar goes here --></li>
+        </li>-->
+        <% if session[:user] %>
+          <li><a href="/sign_out" id="user-nav">SIGN OUT</a></li>
+        <% else %>
+          <li><a href="/sign_in">SIGN IN</a></li>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

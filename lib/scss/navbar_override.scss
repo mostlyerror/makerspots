@@ -7,6 +7,9 @@
 #drop-nav {
   @include nav-text;
 }
+#user-nav {
+  @include nav-text;
+}
 #drop-menu {
   background-color: $dark-color;
   li {

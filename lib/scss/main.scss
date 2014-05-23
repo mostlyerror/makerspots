@@ -1,9 +1,14 @@
 // Including variables
 
 @import "fonts";
+
 @import "variables";
+
 @import "mixins";
+
 @import "navbar_override";
+
+@import "desktop_style";
 
 body {
   background-color: $light-background;

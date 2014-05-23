@@ -1,0 +1,37 @@
+.wrapper {
+  with: 100%;
+  height: 125rem;
+  padding-top: 15rem;
+  background-color: $dark-color;
+  .form-container {
+    input {
+      height: 5rem;
+      width: 96%;
+    }
+    input[type=text], input[type=password] {
+      padding-left: 2rem;
+      margin-bottom: 1rem;
+    }
+    input[type=submit] {
+      border: none;
+      background-color: $blue;
+      color: white;
+      font-family: openBold;
+      font-size: 3rem;
+    }
+    .header {
+      font-family: openBold;
+      font-size: 8rem;
+      color: $blue;
+    }
+  }
+}
+
+.signup {
+  // display: none;
+}
+
+.signin {
+  display: none
+}
+

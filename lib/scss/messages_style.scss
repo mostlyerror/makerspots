@@ -1,0 +1,17 @@
+.message {
+  height: 5rem;
+  width: 40rem;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 1rem;
+  font-family: openBold;
+  font-size: 2rem;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  &.error {
+    color: white;
+    background-color: $success;
+  }
+}

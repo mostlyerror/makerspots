@@ -3,6 +3,8 @@ require 'pry-debugger'
 require 'sinatra/reloader'
 require_relative 'makerspots.rb'
 
+set :bind, '0.0.0.0'
+
 enable :sessions
 
 get '/' do
@@ -11,7 +13,7 @@ get '/' do
     @locations = MakerSpots::ShowFeed.run
     erb :desktop_layout
   else
-    redirect to '/sign_in'
+    redirect to '/landing'
   end
 end
 
@@ -22,26 +24,30 @@ post '/' do
   @email = params[:email]
   @password = params[:password]
   @result = MakerSpots::SignUpUser.run(name: @name, email: @email, password: @password)
-
   # Sign in user automatically if successful signup
-  if @result[:success]
-    @result = MakerSpots::SignInUser.run(@name, @email)
+  if @result[:success?]
+    @result = MakerSpots::SignInUser.run(@email, @password)
     # Redirect to root if successful
-    if @result[:success]
+    if @result[:success?]
       session[:user] = @result[:user]
       redirect '/'
     # Send back to sign_in page if sign in error.
     # Should not happen
     else
       session[:error] = @result[:error]
-      redirect '/sign_in'
+      redirect '/landing'
     end
 
   # Send back to sign_up page with error if failed signup
   else
     session[:error] = @result[:error]
-    redirect '/sign_up'
+    session[:signup_error] = true
+    redirect '/landing'
   end
+end
+
+get '/landing' do
+  erb :landing, :layout => :landing_layout
 end
 
 get '/sign_up' do
@@ -61,8 +67,8 @@ post '/new_user_session' do
     redirect to '/'
   else
     session[:error] = @result[:error]
-    redirect to '/sign_in'
+    redirect to '/landing'
   end
->>>>>>> Signing in and signing up routing
+# Signing in and signing up routing
 end
 

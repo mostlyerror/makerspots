@@ -94,6 +94,9 @@ get '/drop_tables' do
   @db.execute <<-SQL
     DELETE from users
   SQL
+  #  @db.execute <<-SQL
+  #   DELETE from locations
+  # SQL
 
   redirect to '/landing'
 end

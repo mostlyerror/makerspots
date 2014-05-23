@@ -1,6 +1,8 @@
 .about, .image {
   height: 25rem;
-  border: 2px solid $light-grey
+  border: 2px solid $light-grey;
+  border-top: 1px solid $light-grey;
+  border-bottom: 1px solid $light-grey;
 }
 .about {
   font-family: openBold;
@@ -36,6 +38,17 @@
     &:hover {
       background-color: $darker-blue;
     }
+    &.attending {
+      background-color: $success;
+    }
+    a {
+      text-decoration: none;
+      color: white;
+    }
+    a:hover {
+      text-decoration: none;
+      color: white;
+    }
   }
 }
 .image {
@@ -48,6 +61,7 @@
   display: none;
   border-left: 2px solid $light-grey;
   border-right: 2px solid $light-grey;
+  border-bottom: 2px solid $light-grey;
   padding: 4rem;
   span {
     font-family: openRegular;

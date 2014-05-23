@@ -17,6 +17,7 @@ describe 'SignInUser' do
       expect(result[:success?]).to eq true
       expect(result[:user]).to be_a(User)
       expect(result[:user].id).to eq @user.id
+      expect(result.has_key?(:gravatar)).to eq true
     end
   end
 

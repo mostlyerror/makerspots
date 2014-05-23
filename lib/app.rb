@@ -4,6 +4,7 @@ require 'sinatra/reloader'
 require_relative 'makerspots.rb'
 
 enable :sessions
+set :server, 'thin'
 
 get '/' do
   # Render the home page if the user is signed in
@@ -88,7 +89,7 @@ get '/drop_tables' do
   redirect to '/sign_up'
 end
 
-# Helper
+# Helper methods
 
 def name_cleaner(string)
   # Input string (location.name)

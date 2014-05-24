@@ -13,5 +13,4 @@ class MakerSpots::SignInUser
     gravatar = MakerSpots::GetGravatar.run(email)
     gravatar[:success?] ? result.merge(gravatar) : result
   end
-  
 end

@@ -56,11 +56,11 @@ describe 'ShowCheckinsByLocation' do
   end
 
   after(:each) do
-    @db = SQLite3::Database.new "makerspots.db"
-    @db.execute <<-SQL
+    @db = PG.connect( dbname: 'makerspotsdb' )
+    @db.exec <<-SQL
       DELETE from locations
     SQL
-    @db.execute <<-SQL
+    @db.exec <<-SQL
       DELETE from checkins
     SQL
   end

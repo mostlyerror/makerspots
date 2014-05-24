@@ -75,8 +75,8 @@ describe 'database' do
     end
 
     after(:each) do
-      @db = SQLite3::Database.new "makerspots.db"
-      @db.execute <<-SQL
+      @db = PG.connect( dbname: 'makerspotsdb' )
+      @db.exec <<-SQL
         DELETE from locations
       SQL
     end
@@ -119,8 +119,8 @@ describe 'database' do
     end
 
     after(:each) do
-      @db = SQLite3::Database.new "makerspots.db"
-      @db.execute <<-SQL
+      @db = PG.connect( dbname: 'makerspotsdb' )
+      @db.exec <<-SQL
         DELETE from users
       SQL
     end
@@ -149,7 +149,7 @@ describe 'database' do
       expect(@checkin).to be_a(Checkin)
       expect(@checkin.location_id).to eq @location.id
       expect(@checkin.user_id).to eq @user.id
-      expect(@checkin.checked_in).to eq 1
+      expect(@checkin.checked_in).to eq 't'
       # TODO: test the datetime is assigned correctly.
       expect(@checkin.created_at).not_to eq nil
     end
@@ -178,7 +178,7 @@ describe 'database' do
         )
       checkin4 =
         MakerSpots.db.create_checkin(
-          location_id: @location.id + 1,
+          location_id: @location.id.to_i + 1,
           user_id: @user.id
         )
       checkin5 =
@@ -187,7 +187,7 @@ describe 'database' do
           user_id: @user.id
         )
 
-      # Set checked_in to 0
+      # Set checked_in to false
       checkin5 = MakerSpots.db.checkout(checkin5.id)
 
       checkins = MakerSpots.db.get_checkins_by_location(@location.id)
@@ -196,7 +196,6 @@ describe 'database' do
 
       # Should only include checkins with matching location id that are active
       expect(checkins.length).to eq 3
-
       checkin = checkins.first
       expect(checkin.location_id).to eq @location.id
       expect(checkin.user_id).to eq @user.id
@@ -209,18 +208,18 @@ describe 'database' do
 
       expect(checkin).to be_a(Checkin)
       expect(checkin.id).to eq @checkin.id
-      expect(checkin.checked_in).to eq 0
+      expect(checkin.checked_in).to eq 'f'
     end
 
     after(:each) do
-      @db = SQLite3::Database.new "makerspots.db"
-      @db.execute <<-SQL
+      @db = PG.connect( dbname: 'makerspotsdb' )
+      @db.exec <<-SQL
         DELETE from users
       SQL
-      @db.execute <<-SQL
+      @db.exec <<-SQL
         DELETE from locations
       SQL
-      @db.execute <<-SQL
+      @db.exec <<-SQL
         DELETE from checkins
       SQL
     end

@@ -3,36 +3,35 @@ class MakerSpots::DB
 
   def initialize
     # Database method
-    @db = SQLite3::Database.new "makerspots.db"
-
-    @db.execute(
+    @db = PG.connect( dbname: 'makerspotsdb' )
+    @db.exec(
       "CREATE TABLE if not exists locations(
-      id integer,
-      name string NOT NULL,
-      description string NOT NULL,
-      phone string,
-      address string NOT NULL,
+      id serial,
+      name text NOT NULL,
+      description text NOT NULL,
+      phone text,
+      address text NOT NULL,
       PRIMARY KEY (id)
       )"
       )
 
-    @db.execute(
+    @db.exec(
       "CREATE TABLE if not exists users(
-      id integer,
-      name string NOT NULL,
-      email string NOT NULL UNIQUE,
-      password string NOT NULL,
+      id serial,
+      name text NOT NULL,
+      email text NOT NULL UNIQUE,
+      password text NOT NULL,
       PRIMARY KEY (id)
       )"
     )
 
-    @db.execute(
+    @db.exec(
       "CREATE TABLE if not exists checkins(
-        id integer,
+        id serial,
         location_id integer,
         user_id integer,
         checked_in boolean,
-        created_at datetime,
+        created_at timestamp,
         PRIMARY KEY (id)
       )"
     )
@@ -45,23 +44,18 @@ class MakerSpots::DB
   def create_location(data)
     # Input: hash, data, name[string], description[string], phone[string], address[string]. Name, desc, address required
     # Output: Location object
-
-    @db.execute(
-      "INSERT INTO locations (name, description, phone, address)
-      VALUES (?,?,?,?)",
-      data[:name], data[:description], data[:phone], data[:address]
+    data =
+      @db.exec_params(
+        "INSERT INTO locations (name, description, phone, address)
+        VALUES ($1,$2,$3,$4) RETURNING id, name, description, phone, address",
+        [data[:name], data[:description], data[:phone], data[:address]]
       )
-
-    data = @db.execute(
-      "SELECT * FROM locations where id = last_insert_rowid()"
-    ).flatten
-
     data_hash = {
-      id: data[0],
-      name: data[1],
-      description: data[2],
-      phone: data[3],
-      address: data[4]
+      id: data[0]['id'],
+      name: data[0]['name'],
+      description: data[0]['description'],
+      phone: data[0]['phone'],
+      address: data[0]['address']
     }
 
     build_location(data_hash)
@@ -71,17 +65,17 @@ class MakerSpots::DB
     # Input: id[integer]
     # Output: Location object
 
-    data = @db.execute(
+    data = @db.exec_params(
       "SELECT * FROM locations
-      WHERE id = ?", id
-    ).flatten
+      WHERE id = $1", [id]
+    )
 
     data_hash = {
-      id: data[0],
-      name: data[1],
-      description: data[2],
-      phone: data[3],
-      address: data[4]
+      id: data[0]['id'],
+      name: data[0]['name'],
+      description: data[0]['description'],
+      phone: data[0]['phone'],
+      address: data[0]['address']
     }
 
     build_location(data_hash)
@@ -91,18 +85,18 @@ class MakerSpots::DB
     # Output: Array of Location objects. Ascending order by id
 
     locations_holder = []
-    data = @db.execute(
+    data = @db.exec(
       "SELECT * FROM locations"
     )
 
-    # Data is array of arrays, l_data is inner array, contains location attributes
-    data.each do |l_data|
+    # Data is an array of location data in hash format
+    data.each do |location|
       data_hash = {
-        id: l_data[0],
-        name: l_data[1],
-        description: l_data[2],
-        phone: l_data[3],
-        address: l_data[4]
+        id: location['id'],
+        name: location['name'],
+        description: location['description'],
+        phone: location['phone'],
+        address: location['address']
       }
       locations_holder << build_location(data_hash)
     end
@@ -117,22 +111,17 @@ class MakerSpots::DB
   def create_user(data)
     # Input: hash, data name[string], email[string], password[string]. All required
     # Output: User object
-
-    @db.execute(
+    data = @db.exec_params(
       "INSERT INTO users (name, email, password)
-      VALUES (?,?,?)",
-      data[:name], data[:email], data[:password]
+      VALUES ($1,$2,$3) RETURNING id, name, email, password",
+      [data[:name], data[:email], data[:password]]
     )
 
-    data = @db.execute(
-      "SELECT * FROM users where id = last_insert_rowid()"
-    ).flatten
-
     data_hash = {
-      id: data[0],
-      name: data[1],
-      email: data[2],
-      password: data[3]
+      id: data[0]['id'],
+      name: data[0]['name'],
+      email: data[0]['email'],
+      password: data[0]['password']
     }
 
     build_user(data_hash)
@@ -142,15 +131,15 @@ class MakerSpots::DB
     # Input: id[integer]
     # Output: User object
 
-    data = @db.execute(
-      "SELECT * FROM users where id = ?", id
-      ).flatten
+    data = @db.exec(
+      "SELECT * FROM users where id = $1", [id]
+      )
 
     data_hash = {
-      id: data[0],
-      name: data[1],
-      email: data[2],
-      password: data[3]
+      id: data[0]['id'],
+      name: data[0]['name'],
+      email: data[0]['email'],
+      password: data[0]['password']
     }
 
     build_user(data_hash)
@@ -161,17 +150,19 @@ class MakerSpots::DB
     # Output: User object
     # Use this method for signing in
 
-    data = @db.execute(
-      "SELECT * FROM users where email = ?", email
-      ).flatten
+    data = @db.exec(
+      "SELECT * FROM users where email = $1", [email]
+      )
 
-    return false if data.empty?
+    if data.cmd_tuples == 0
+      return false
+    end
 
     data_hash = {
-      id: data[0],
-      name: data[1],
-      email: data[2],
-      password: data[3]
+      id: data[0]['id'],
+      name: data[0]['name'],
+      email: data[0]['email'],
+      password: data[0]['password']
     }
 
     build_user(data_hash)
@@ -184,27 +175,23 @@ class MakerSpots::DB
   def create_checkin(data)
     # Input: hash, data location_id[integer], user_id[integer]
     # Output: Checkin object
-    # Checkins belong to locations and users. Checked_in is a boolean value, only one checkin per user can be true at any one time. Handle this in a command that runs before creating a new checkin
+    # Checkins belong to locations and users. Checked_in is a boolean value, 't' or 'f'
 
     # TODO: Validate that checkin with value of 1 does not exist for given user.
-
-    @db.execute(
+    data = @db.exec_params(
       "INSERT INTO checkins (
         location_id, user_id, checked_in, created_at)
-        VALUES (?,?,?,CURRENT_TIMESTAMP)",
-        data[:location_id], data[:user_id], 1
+        VALUES ($1,$2,$3,CURRENT_TIMESTAMP)
+        RETURNING id, location_id, user_id, checked_in, created_at",
+        [data[:location_id], data[:user_id], 1]
     )
 
-    data = @db.execute(
-        "SELECT * FROM checkins where id = last_insert_rowid()"
-      ).flatten
-
     data_hash = {
-      id: data[0],
-      location_id: data[1],
-      user_id: data[2],
-      checked_in: data[3],
-      created_at: data[4]
+      id: data[0]['id'],
+      location_id: data[0]['location_id'],
+      user_id: data[0]['user_id'],
+      checked_in: data[0]['checked_in'],
+      created_at: data[0]['created_at']
     }
 
     build_checkin(data_hash)
@@ -215,19 +202,21 @@ class MakerSpots::DB
     # Output: Active checkin object
 
     # Only select active checkins for a user
-    data = @db.execute(
+    data = @db.exec_params(
       "SELECT * FROM checkins
-      WHERE user_id = ?
-      AND checked_in = ?
-      ", user_id, 1
-    ).flatten
-
+      WHERE user_id = $1
+      AND checked_in = $2
+      ", [user_id, 't']
+    )
+    if data.cmd_tuples == 0
+      return false
+    end
     data_hash = {
-      id: data[0],
-      location_id: data[1],
-      user_id: data[2],
-      checked_in: data[3],
-      created_at: data[4]
+      id: data[0]['id'],
+      location_id: data[0]['location_id'],
+      user_id: data[0]['user_id'],
+      checked_in: data[0]['checked_in'],
+      created_at: data[0]['created_at']
     }
 
     build_checkin(data_hash)
@@ -239,22 +228,20 @@ class MakerSpots::DB
     checkins_holder = []
 
     # Only select active checkins for a location
-    data = @db.execute(
+    data = @db.exec(
       "SELECT * FROM checkins
-      WHERE location_id = ?
-      AND checked_in = ?
-      ", loc_id, 1
+      WHERE location_id = $1
+      AND checked_in = $2
+      ", [loc_id, 't']
     )
-
-    data.each do |c_data|
+    data.each do |checkin|
       data_hash = {
-        id: c_data[0],
-        location_id: c_data[1],
-        user_id: c_data[2],
-        checked_in: c_data[3],
-        created_at: c_data[4]
+        id: checkin['id'],
+        location_id: checkin['location_id'],
+        user_id: checkin['user_id'],
+        checked_in: checkin['checked_in'],
+        created_at: checkin['created_at']
       }
-
       checkins_holder << build_checkin(data_hash)
     end
 
@@ -266,21 +253,25 @@ class MakerSpots::DB
     # Output: Checkin object
     # This method should run on any user checkins that have a checked_in value of 1 before creating a new checkin
     # Only updates checked_in from 1 to 0
-    @db.execute(
+
+    @db.exec_params(
       "UPDATE checkins
-      SET checked_in = ?
-      WHERE user_id = ?", 0, id
+      SET checked_in = $1
+      WHERE id = $2
+      AND checked_in = $3", [0, id, 1]
     )
 
-    data = @db.execute(
-      "SELECT * FROM checkins where id = ?", id
-    ).flatten
+    data = @db.exec_params(
+      "SELECT * FROM checkins where id = $1", [id]
+    )
+
+>>>>>>> heroku
     data_hash = {
-      id: data[0],
-      location_id: data[1],
-      user_id: data[2],
-      checked_in: data[3],
-      created_at: data[4]
+      id: data[0]['id'],
+      location_id: data[0]['location_id'],
+      user_id: data[0]['user_id'],
+      checked_in: data[0]['checked_in'],
+      created_at: data[0]['created_at']
     }
 
     build_checkin(data_hash)

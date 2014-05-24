@@ -141,11 +141,11 @@ class MakerSpots::DB
   def get_user_by_id(id)
     # Input: id[integer]
     # Output: User object
-
+binding.pry
     data = @db.execute(
       "SELECT * FROM users where id = ?", id
       ).flatten
-
+binding.pry
     data_hash = {
       id: data[0],
       name: data[1],

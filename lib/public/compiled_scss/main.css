@@ -224,6 +224,117 @@
     color: white;
     background-color: #fb883d; }
 
+/* line 2, ../../scss/mobile_location_style.scss */
+.small-location {
+  padding: 0;
+  font-family: openBold; }
+  /* line 4, ../../scss/mobile_location_style.scss */
+  .small-location .row {
+    width: 100%;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0; }
+    /* line 9, ../../scss/mobile_location_style.scss */
+    .small-location .row .col-sm-12, .small-location .row .col-xs-12 {
+      padding: 0; }
+  /* line 14, ../../scss/mobile_location_style.scss */
+  .small-location .image-small {
+    height: 25rem;
+    background-size: cover;
+    width: 100%;
+    margin-bottom: 1rem; }
+    /* line 19, ../../scss/mobile_location_style.scss */
+    .small-location .image-small .filler {
+      height: 75%; }
+    /* line 22, ../../scss/mobile_location_style.scss */
+    .small-location .image-small .name {
+      background-color: rgba(20, 20, 20, 0.7);
+      color: white;
+      text-align: right;
+      font-size: 3rem;
+      padding-right: 1rem;
+      padding-top: 1.2rem;
+      height: 25%; }
+  /* line 32, ../../scss/mobile_location_style.scss */
+  .small-location button {
+    background-color: #599ec8;
+    color: white;
+    border: none;
+    width: 90%;
+    max-width: 50rem;
+    font-size: 3rem;
+    display: block;
+    margin: 0 auto; }
+    /* line 41, ../../scss/mobile_location_style.scss */
+    .small-location button:hover {
+      background-color: #3b86b3; }
+    /* line 44, ../../scss/mobile_location_style.scss */
+    .small-location button.attending {
+      background-color: #fb883d; }
+    /* line 47, ../../scss/mobile_location_style.scss */
+    .small-location button a {
+      text-decoration: none;
+      color: white; }
+    /* line 51, ../../scss/mobile_location_style.scss */
+    .small-location button a:hover {
+      text-decoration: none;
+      color: white; }
+  /* line 56, ../../scss/mobile_location_style.scss */
+  .small-location .image-circles {
+    display: block;
+    max-width: 35.25rem;
+    margin: 0 auto;
+    margin-top: 1rem; }
+  /* line 62, ../../scss/mobile_location_style.scss */
+  .small-location .image-holder {
+    margin: 0 auto;
+    opacity: .8;
+    border-radius: 100%;
+    height: 7rem;
+    width: 7rem;
+    background-color: #c7c9cb;
+    display: inline-block;
+    margin-right: 2rem; }
+    /* line 71, ../../scss/mobile_location_style.scss */
+    .small-location .image-holder.last {
+      margin-right: 0; }
+    /* line 74, ../../scss/mobile_location_style.scss */
+    .small-location .image-holder:hover {
+      opacity: 1; }
+    /* line 77, ../../scss/mobile_location_style.scss */
+    .small-location .image-holder.counter {
+      background: none;
+      color: #c7c9cb;
+      text-align: center;
+      opacity: 1;
+      font-size: 6.5rem;
+      margin-bottom: 1rem; }
+  /* line 88, ../../scss/mobile_location_style.scss */
+  .small-location .info {
+    padding-right: 1.5rem;
+    font-size: 1.5rem; }
+    /* line 91, ../../scss/mobile_location_style.scss */
+    .small-location .info span {
+      display: block;
+      text-align: right; }
+  /* line 96, ../../scss/mobile_location_style.scss */
+  .small-location .about {
+    font-size: 5rem;
+    text-align: left;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem; }
+    /* line 101, ../../scss/mobile_location_style.scss */
+    .small-location .about span {
+      display: block; }
+    /* line 104, ../../scss/mobile_location_style.scss */
+    .small-location .about .title {
+      margin-bottom: 0rem; }
+    /* line 107, ../../scss/mobile_location_style.scss */
+    .small-location .about .descript-txt {
+      background-color: none;
+      font-size: 1.7rem;
+      font-family: openLight; }
+
 /* line 2, ../../scss/mobile_list_style.scss */
 .container.small-info {
   margin-left: 0;

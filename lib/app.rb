@@ -101,6 +101,10 @@ get '/location_list' do
   erb :desktop_layout
 end
 
+get '/mobile_location/:id' do
+  @result = MakerSposts::ShowLocationById.run(params[:id])
+end
+
 get '/mobile_test' do
   @result = MakerSpots::ShowFeed.run
   erb :_mobile_list

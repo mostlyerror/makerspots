@@ -17,6 +17,7 @@ require_relative './commands/checkout_user.rb'
 require_relative './commands/add_new_location.rb'
 require_relative './commands/get_gravatar_img.rb'
 require_relative './commands/get_user_by_id.rb'
+require_relative './commands/show_location_by_id.rb'
 require_relative 'app.rb'
 
 

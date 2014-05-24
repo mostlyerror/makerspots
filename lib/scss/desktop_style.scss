@@ -20,7 +20,7 @@
     margin: 0 auto;
     height: 33%;
     .image-holder {
-      opacity: .5;
+      opacity: .8;
       border-radius: 100%;
       height: 8rem;
       width: 8rem;
@@ -30,6 +30,16 @@
       margin-right: 2rem;
       &:hover {
         opacity: 1;
+      }
+      &.counter {
+        background: none;
+        color: $light-grey;
+        // color: $dark-color;
+        text-align: center;
+        // padding-top: .78rem;
+        opacity: 1;
+        font-size: 6.5rem;
+        margin-bottom: 1rem;
       }
     }
   }

@@ -107,6 +107,16 @@ get '/location_list' do
   erb :desktop_layout
 end
 
+get '/mobile_test' do
+  @result = MakerSpots::ShowFeed.run
+  erb :_mobile_list
+end
+
+get '/mobile_test_location' do
+  # @result = MakerSpots::ShowFeed.run
+  erb :_mobile_location
+end
+
 # Admin Location Log
 
 get '/add_location' do

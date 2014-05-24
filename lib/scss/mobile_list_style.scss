@@ -1,0 +1,41 @@
+.container {
+  &.small-info {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    .row {
+      border-bottom: 1px solid $dark-color;
+      cursor: pointer;
+    }
+  }
+}
+
+.info_small {
+  color: $dark-color;
+  font-family: openBold;
+  .name {
+    font-size: 3rem;
+  }
+  .address {
+    font-size: 1.6rem;
+    display: inline-block;
+    float: left;
+  }
+  .checkins {
+    text-align: right;
+    display: inline-block;
+    float: right;
+    // background-color: $blue;
+  }
+  .checkin-circles {
+    .checkin {
+      height: 1.2rem;
+      width: 1.2rem;
+      border-radius: 100%;
+      background-color: $blue;
+      float: right;
+      margin-left: .5rem;
+      margin-bottom: 1rem;
+    }
+  }
+}

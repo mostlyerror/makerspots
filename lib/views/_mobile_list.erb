@@ -1,4 +1,21 @@
-<!-- <% @result[:locations].each do |location, checkins| %>
-  <div>
-  <% end %>
- -->
+<div class="container visible-xs visible-sm small-info">
+<% @result[:locations].each do |location, checkins| %>
+  <div class = "row">
+    <div class="col-sm-12 col-xs-12">
+      <div class="info_small">
+        <div class="name"><%= location.name.upcase %> </div>
+        <div class="address"><%= location.address %> </div>
+        <div class="checkins">
+          <div class="checkin-circles">
+          <% unless checkins.nil? %>
+            <% (0...checkins.length).each do |i| %>
+              <div class="checkin"></div>
+            <% end %>
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>

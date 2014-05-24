@@ -102,7 +102,8 @@ get '/location_list' do
 end
 
 get '/mobile_location/:id' do
-  @result = MakerSposts::ShowLocationById.run(params[:id])
+  @result = MakerSpots::ShowLocationById.run(params[:id])
+  erb :_mobile_location
 end
 
 get '/mobile_test' do

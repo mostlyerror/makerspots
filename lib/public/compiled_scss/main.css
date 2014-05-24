@@ -202,8 +202,8 @@
     font-size: 8rem;
     color: #599ec8; }
 
-/* line 34, ../../scss/landing.scss */
-.signin {
+/* line 30, ../../scss/landing.scss */
+.signup {
   display: none; }
 
 /* line 1, ../../scss/messages_style.scss */
@@ -344,25 +344,33 @@
   .container.small-info .row {
     border-bottom: 1px solid #333333;
     cursor: pointer; }
+/* line 11, ../../scss/mobile_list_style.scss */
+.container a {
+  text-decoration: none;
+  color: #333333; }
+/* line 15, ../../scss/mobile_list_style.scss */
+.container a:hover {
+  text-decoration: none;
+  color: #333333; }
 
-/* line 13, ../../scss/mobile_list_style.scss */
+/* line 21, ../../scss/mobile_list_style.scss */
 .info_small {
   color: #333333;
   font-family: openBold; }
-  /* line 16, ../../scss/mobile_list_style.scss */
+  /* line 24, ../../scss/mobile_list_style.scss */
   .info_small .name {
     font-size: 3rem; }
-  /* line 19, ../../scss/mobile_list_style.scss */
+  /* line 27, ../../scss/mobile_list_style.scss */
   .info_small .address {
     font-size: 1.6rem;
     display: inline-block;
     float: left; }
-  /* line 24, ../../scss/mobile_list_style.scss */
+  /* line 32, ../../scss/mobile_list_style.scss */
   .info_small .checkins {
     text-align: right;
     display: inline-block;
     float: right; }
-  /* line 31, ../../scss/mobile_list_style.scss */
+  /* line 39, ../../scss/mobile_list_style.scss */
   .info_small .checkin-circles .checkin {
     height: 1.2rem;
     width: 1.2rem;

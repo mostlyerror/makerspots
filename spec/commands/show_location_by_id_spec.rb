@@ -11,4 +11,9 @@ describe 'ShowLocationById' do
     expect(result[:location]).to be_a(Location)
   end
 
+  it 'returns an array of active checkins' do
+    result = MakerSpots::ShowLocationById.run(1)
+    expect(result[:checkins]).to be_a(Array)
+  end
+
 end

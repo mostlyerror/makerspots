@@ -14,10 +14,9 @@ describe 'CheckinUser' do
       address: '619 Congress Ave'
       )
   end
-  describe 'when no sign in exists for user' do
+  describe 'when no check in exists for user' do
     it 'returns a successful results hash' do
-      result = MakerSpots::CheckinUser.run(@location.id, @user.id)
-
+      result = MakerSpots::CheckinUser.run(@user.id, @location.id)
       expect(result[:success?]).to eq true
       expect(result[:checkin]).to be_a(Checkin)
       expect(result[:checkin].location_id).to eq @location.id
@@ -32,7 +31,7 @@ describe 'CheckinUser' do
           location_id: @location.id,
           user_id: @user.id
         )
-      result = MakerSpots::CheckinUser.run(@location.id, @user.id)
+      result = MakerSpots::CheckinUser.run(@user.id, @location.id)
 
       # Returns the new Checkin
       expect(result[:checkin]).to be_a(Checkin)
@@ -42,14 +41,14 @@ describe 'CheckinUser' do
   end
 
   after(:each) do
-    @db = SQLite3::Database.new "makerspots.db"
-    @db.execute <<-SQL
+    @db = PG.connect( dbname: 'makerspotsdb' )
+    @db.exec <<-SQL
       DELETE from users
     SQL
-    @db.execute <<-SQL
+    @db.exec <<-SQL
       DELETE from checkins
     SQL
-    @db.execute <<-SQL
+    @db.exec <<-SQL
       DELETE from locations
     SQL
   end

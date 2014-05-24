@@ -173,7 +173,7 @@ class MakerSpots::DB
   def create_checkin(data)
     # Input: hash, data location_id[integer], user_id[integer]
     # Output: Checkin object
-    # Checkins belong to locations and users. Checked_in is a boolean value, only one checkin per user can be true at any one time. Handle this in a command that runs before creating a new checkin
+    # Checkins belong to locations and users. Checked_in is a boolean value, 't' or 'f'
 
     # TODO: Validate that checkin with value of 1 does not exist for given user.
     data = @db.exec_params(
@@ -204,9 +204,11 @@ class MakerSpots::DB
       "SELECT * FROM checkins
       WHERE user_id = $1
       AND checked_in = $2
-      ", [user_id, 1]
+      ", [user_id, 't']
     )
-
+    if data.cmd_tuples == 0
+      return false
+    end
     data_hash = {
       id: data[0]['id'],
       location_id: data[0]['location_id'],

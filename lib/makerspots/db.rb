@@ -154,7 +154,9 @@ class MakerSpots::DB
       "SELECT * FROM users where email = $1", [email]
       )
 
-    return false if data[0].empty?
+    if data.cmd_tuples == 0
+      return false
+    end
 
     data_hash = {
       id: data[0]['id'],

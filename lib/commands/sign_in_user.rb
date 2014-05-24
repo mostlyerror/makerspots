@@ -11,5 +11,3 @@ class MakerSpots::SignInUser
   	}
   end
 end
-
-

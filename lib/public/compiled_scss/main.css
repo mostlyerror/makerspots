@@ -34,9 +34,20 @@
     color: #599ec8; }
 
 /* line 10, ../../scss/navbar_override.scss */
+#user-nav {
+  font-size: 3rem;
+  font-family: openBold;
+  text-decoration: none;
+  color: white; }
+  /* line 6, ../../scss/mixins.scss */
+  #user-nav:hover {
+    text-decoration: none;
+    color: #599ec8; }
+
+/* line 13, ../../scss/navbar_override.scss */
 #drop-menu {
   background-color: #333333; }
-  /* line 13, ../../scss/navbar_override.scss */
+  /* line 16, ../../scss/navbar_override.scss */
   #drop-menu li a {
     font-size: 3rem;
     font-family: openBold;
@@ -47,7 +58,7 @@
       text-decoration: none;
       color: #599ec8; }
 
-/* line 18, ../../scss/navbar_override.scss */
+/* line 21, ../../scss/navbar_override.scss */
 #sign {
   font-size: 3rem;
   font-family: openBold;
@@ -58,7 +69,7 @@
     text-decoration: none;
     color: #599ec8; }
 
-/* line 21, ../../scss/navbar_override.scss */
+/* line 24, ../../scss/navbar_override.scss */
 #spots {
   font-family: openLight; }
 

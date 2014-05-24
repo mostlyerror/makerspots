@@ -1,104 +1,106 @@
-<!-- Start of Locations loop -->
-<% i = 0 %>
-<% @result[:locations].each do |location, checkins| %>
-  <div class="row desktop-layout">
-<% if i.even? %>
-    <div class="image col-sm-6 col-md-6 col-lg-6" style="background-image: url('../images/locations/<%= name_cleaner(location.name) %>.jpg')"></div>
+<div class="container visible-md visible-lg">
+  <!-- Start of Locations loop -->
+  <% i = 0 %>
+  <% @result[:locations].each do |location, checkins| %>
+    <div class="row desktop-layout">
+  <% if i.even? %>
+      <div class="image col-sm-6 col-md-6 col-lg-6" style="background-image: url('../images/locations/<%= name_cleaner(location.name) %>.jpg')"></div>
 
-    <div class="about col-sm-6 col-md-6 col-lg-6">
-      <div class="title"><%= location.name %></div>
-      <div class="image-circles">
-        <% if checkins.nil? %>
-          <div class="image-holder"></div>
-          <div class="image-holder"></div>
-          <div class="image-holder"></div>
-          <div class="image-holder"></div>
-        <% else %>
-          <% (0..2).each do |i| %>
-            <% if checkins[i] %>
-              <% result = MakerSpots::GetUserById.run(checkins[i].user_id) %>
-              <% gravatar = MakerSpots::GetGravatar.run(result[:user].email) %>
-              <div class="image-holder" style="background-image: url('<%=gravatar[:gravatar]%>') "></div>
+      <div class="about col-sm-6 col-md-6 col-lg-6">
+        <div class="title"><%= location.name %></div>
+        <div class="image-circles">
+          <% if checkins.nil? %>
+            <div class="image-holder"></div>
+            <div class="image-holder"></div>
+            <div class="image-holder"></div>
+            <div class="image-holder"></div>
+          <% else %>
+            <% (0..2).each do |i| %>
+              <% if checkins[i] %>
+                <% result = MakerSpots::GetUserById.run(checkins[i].user_id) %>
+                <% gravatar = MakerSpots::GetGravatar.run(result[:user].email) %>
+                <div class="image-holder" style="background-image: url('<%=gravatar[:gravatar]%>') "></div>
+              <% else %>
+                <div class="image-holder"></div>
+              <% end %>
+            <% end %>
+            <% if checkins[3] %>
+              <div class="image-holder counter">+<%= checkins.length - 3 %></div>
             <% else %>
               <div class="image-holder"></div>
             <% end %>
           <% end %>
-          <% if checkins[3] %>
-            <div class="image-holder counter">+<%= checkins.length - 3 %></div>
+        </div>
+        <!-- Logic to swap checkin/checkout buttons depending on user checkin status -->
+        <% if checkins.nil? %>
+          <button><a href="/checkin/<%= location.id %>">ATTEND</a></button>
+        <% else %>
+          <% if checkins.any?{|checkin| checkin.user_id == session[:user].id } %>
+          <button class="attending"><a href="/checkout">I'M ATTENDING</a></button>
           <% else %>
-            <div class="image-holder"></div>
+          <button><a href="/checkin/<%= location.id %>">ATTEND</a></button>
           <% end %>
         <% end %>
       </div>
-      <!-- Logic to swap checkin/checkout buttons depending on user checkin status -->
-      <% if checkins.nil? %>
-        <button><a href="/checkin/<%= location.id %>">ATTEND</a></button>
-      <% else %>
-        <% if checkins.any?{|checkin| checkin.user_id == session[:user].id } %>
-        <button class="attending"><a href="/checkout">I'M ATTENDING</a></button>
-        <% else %>
-        <button><a href="/checkin/<%= location.id %>">ATTEND</a></button>
-        <% end %>
-      <% end %>
-    </div>
 
-<% else %>
+  <% else %>
 
-    <div class="about col-sm-6 col-md-6 col-lg-6">
-      <div class="title"><%= location.name %></div>
-      <div class="image-circles">
-        <% if checkins.nil? %>
-          <div class="image-holder"></div>
-          <div class="image-holder"></div>
-          <div class="image-holder"></div>
-          <div class="image-holder"></div>
-        <% else %>
-          <% (0..2).each do |i| %>
-            <% if checkins[i] %>
-              <% result = MakerSpots::GetUserById.run(checkins[i].user_id) %>
-              <% gravatar = MakerSpots::GetGravatar.run(result[:user].email) %>
-              <div class="image-holder" style="background-image: url('<%=gravatar[:gravatar]%>') "></div>
+      <div class="about col-sm-6 col-md-6 col-lg-6">
+        <div class="title"><%= location.name %></div>
+        <div class="image-circles">
+          <% if checkins.nil? %>
+            <div class="image-holder"></div>
+            <div class="image-holder"></div>
+            <div class="image-holder"></div>
+            <div class="image-holder"></div>
+          <% else %>
+            <% (0..2).each do |i| %>
+              <% if checkins[i] %>
+                <% result = MakerSpots::GetUserById.run(checkins[i].user_id) %>
+                <% gravatar = MakerSpots::GetGravatar.run(result[:user].email) %>
+                <div class="image-holder" style="background-image: url('<%=gravatar[:gravatar]%>') "></div>
+              <% else %>
+                <div class="image-holder"></div>
+              <% end %>
+            <% end %>
+            <% if checkins[3] %>
+              <div class="image-holder counter">+<%= checkins.length - 3 %></div>
             <% else %>
               <div class="image-holder"></div>
             <% end %>
           <% end %>
-          <% if checkins[3] %>
-            <div class="image-holder counter">+<%= checkins.length - 3 %></div>
+        </div>
+        <% if checkins.nil? %>
+          <button><a href="/checkin/<%= location.id %>">ATTEND</a></button>
+        <% else %>
+          <% if checkins.any?{|checkin| checkin.user_id == session[:user].id } %>
+          <button class="attending"><a href="/checkout">I'M ATTENDING</a></button>
           <% else %>
-            <div class="image-holder"></div>
+          <button><a href="/checkin/<%= location.id %>">ATTEND</a></button>
           <% end %>
         <% end %>
       </div>
-      <% if checkins.nil? %>
-        <button><a href="/checkin/<%= location.id %>">ATTEND</a></button>
-      <% else %>
-        <% if checkins.any?{|checkin| checkin.user_id == session[:user].id } %>
-        <button class="attending"><a href="/checkout">I'M ATTENDING</a></button>
-        <% else %>
-        <button><a href="/checkin/<%= location.id %>">ATTEND</a></button>
+
+      <div class="image col-sm-6 col-md-6 col-lg-6" style="background-image: url('../images/locations/<%= name_cleaner(location.name) %>.jpg')"></div>
+
+  <% end %>
+      <div class="col-md-12 description">
+        <div class="contact">
+          <span class="heading">Phone:</span>
+          <span class="context"><%= location.phone %></span>
+        </div>
+        <% if location.address %>
+        <div class="contact">
+          <span class="heading">Address:</span>
+          <span class="context"><%= location.address %></span>
+        </div>
         <% end %>
-      <% end %>
-    </div>
-
-    <div class="image col-sm-6 col-md-6 col-lg-6" style="background-image: url('../images/locations/<%= name_cleaner(location.name) %>.jpg')"></div>
-
-<% end %>
-    <div class="col-md-12 description">
-      <div class="contact">
-        <span class="heading">Phone:</span>
-        <span class="context"><%= location.phone %></span>
+        <!-- <span class="about-drop">ABOUT:</span> -->
+        <span class="info">
+          <%= location.description %>
+        </span>
       </div>
-      <% if location.address %>
-      <div class="contact">
-        <span class="heading">Address:</span>
-        <span class="context"><%= location.address %></span>
-      </div>
-      <% end %>
-      <!-- <span class="about-drop">ABOUT:</span> -->
-      <span class="info">
-        <%= location.description %>
-      </span>
     </div>
-  </div>
-<% i += 1 %>
-<% end %> <!-- End of locations loop -->
+  <% i += 1 %>
+  <% end %> <!-- End of locations loop -->
+</div>

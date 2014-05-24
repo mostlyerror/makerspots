@@ -1,14 +1,3 @@
-<div class="container desktop-contain">
-<<<<<<< HEAD
 <!-- Start of Locations loop -->
-<% i = 0 %>
-<% @result[:locations].each do |location, checkins| %>
-  <div class="row desktop-layout visible-md visible-lg">
-<% if i.even? %>
-    <div class="image col-sm-6 col-md-6 col-lg-6" style="background-image: url('../images/locations/<%= name_cleaner(location.name) %>.jpg')"></div>
-=======
->>>>>>> caf01998d2e245af8a925945e5e817c7c3f06bc3
-
 <%= erb :_desktop_locations, :layout => false %>
 <%= erb :_mobile_list, :layout => false %>
-</div>

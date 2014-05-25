@@ -1,9 +1,9 @@
 <% location = @result[:location] %>
 <% checkins = @result[:checkins] %>
-<div class="container visible-xs visible-sm small-location" id="contain-small-location">
+<div class="container small-location" id="contain-small-location">
   <div class="row">
-    <div class="col-sm-12 col-xs-12">
-      <div class="image-small" style="background-image: url('../images/locations/wholly-cow-burgers.jpg')">
+    <div class="col-sm-12 col-xs-12 col-md-8 col-md-offset-2">
+      <div class="image-small" style="background-image: url('../images/locations/<%= name_cleaner(location.name) %>.jpg')">
         <div class="filler"></div>
         <div class="name">
           <%= location.name %>
@@ -13,7 +13,7 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-12 col-xs-12">
+    <div class="col-sm-12 col-xs-12 col-md-8 col-md-offset-2">
       <!-- Logic to swap checkin/checkout buttons depending on user checkin status -->
         <% if checkins.nil? %>
           <button><a href="/checkin/<%= location.id %>">ATTEND</a></button>
@@ -28,7 +28,7 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-12 col-xs-12">
+    <div class="col-sm-12 col-xs-12 col-md-8 col-md-offset-2">
       <div class="image-circles">
          <% if checkins.nil? %>
             <div class="image-holder"></div>
@@ -56,7 +56,7 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-12 col-xs-12">
+    <div class="col-sm-12 col-xs-12 col-md-8 col-md-offset-2">
       <div class="info">
         <span class="phone">Phone: <%= location.phone %> </span>
         <span class="address">Location: <%= location.address %></span>
@@ -65,7 +65,7 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-12 col-xs-12">
+    <div class="col-sm-12 col-xs-12 col-md-8 col-md-offset-2">
       <div class="about">
         <span class="title">ABOUT:</span>
         <span class="descript-txt">

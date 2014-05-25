@@ -9,9 +9,10 @@
   src: url(../custom_fonts/Open_Sans/OpenSans-Bold.ttf); }
 /* line 1, ../../scss/navbar_override.scss */
 .nav-color {
-  background: #7fb4d5; }
+  background: #7fb4d5;
+  border-bottom: none; }
 
-/* line 4, ../../scss/navbar_override.scss */
+/* line 5, ../../scss/navbar_override.scss */
 #brand-text {
   font-size: 3rem;
   font-family: openBold;
@@ -22,7 +23,7 @@
     text-decoration: none;
     color: #599ec8; }
 
-/* line 7, ../../scss/navbar_override.scss */
+/* line 8, ../../scss/navbar_override.scss */
 #drop-nav {
   font-size: 3rem;
   font-family: openBold;
@@ -33,7 +34,7 @@
     text-decoration: none;
     color: #599ec8; }
 
-/* line 10, ../../scss/navbar_override.scss */
+/* line 11, ../../scss/navbar_override.scss */
 #user-nav {
   font-size: 3rem;
   font-family: openBold;
@@ -44,10 +45,10 @@
     text-decoration: none;
     color: #599ec8; }
 
-/* line 13, ../../scss/navbar_override.scss */
+/* line 14, ../../scss/navbar_override.scss */
 #drop-menu {
   background-color: #333333; }
-  /* line 16, ../../scss/navbar_override.scss */
+  /* line 17, ../../scss/navbar_override.scss */
   #drop-menu li a {
     font-size: 3rem;
     font-family: openBold;
@@ -58,7 +59,7 @@
       text-decoration: none;
       color: #599ec8; }
 
-/* line 21, ../../scss/navbar_override.scss */
+/* line 22, ../../scss/navbar_override.scss */
 #sign {
   font-size: 3rem;
   font-family: openBold;
@@ -69,13 +70,23 @@
     text-decoration: none;
     color: #599ec8; }
 
-/* line 24, ../../scss/navbar_override.scss */
+/* line 25, ../../scss/navbar_override.scss */
 #spots {
   font-family: openLight; }
 
+/* line 29, ../../scss/navbar_override.scss */
+.navbar-header #nav-toggle {
+  border-color: white; }
+  /* line 31, ../../scss/navbar_override.scss */
+  .navbar-header #nav-toggle:hover, .navbar-header #nav-toggle:focus {
+    background-color: #599ec8; }
+  /* line 34, ../../scss/navbar_override.scss */
+  .navbar-header #nav-toggle .icon-bar {
+    background-color: white; }
+
 /* line 1, ../../scss/desktop_style.scss */
 .desktop-contain {
-  margin-top: 7rem; }
+  margin-top: 1rem; }
 
 /* line 5, ../../scss/desktop_style.scss */
 .about, .image {
@@ -180,29 +191,30 @@
   with: 100%;
   height: 125rem;
   padding-top: 15rem;
-  background-color: #333333; }
-  /* line 7, ../../scss/landing.scss */
+  background-color: #333333;
+  margin-top: -60px; }
+  /* line 8, ../../scss/landing.scss */
   .wrapper .form-container input {
     height: 5rem;
     width: 96%; }
-  /* line 11, ../../scss/landing.scss */
+  /* line 12, ../../scss/landing.scss */
   .wrapper .form-container input[type=text], .wrapper .form-container input[type=password] {
     padding-left: 2rem;
     margin-bottom: 1rem; }
-  /* line 15, ../../scss/landing.scss */
+  /* line 16, ../../scss/landing.scss */
   .wrapper .form-container input[type=submit] {
     border: none;
     background-color: #599ec8;
     color: white;
     font-family: openBold;
     font-size: 3rem; }
-  /* line 22, ../../scss/landing.scss */
+  /* line 23, ../../scss/landing.scss */
   .wrapper .form-container .header {
     font-family: openBold;
     font-size: 8rem;
     color: #599ec8; }
 
-/* line 30, ../../scss/landing.scss */
+/* line 31, ../../scss/landing.scss */
 .signup {
   display: none; }
 
@@ -382,4 +394,5 @@
 
 /* line 22, ../../scss/main.scss */
 body {
-  background-color: #f7f7f7; }
+  background-color: #f7f7f7;
+  padding-top: 50px; }

@@ -1,5 +1,6 @@
 .nav-color {
   background: $lighter-blue;
+  border-bottom: none;
 }
 #brand-text {
   @include nav-text;
@@ -24,3 +25,15 @@
 #spots {
   font-family: openLight;
 }
+.navbar-header {
+  #nav-toggle {
+    border-color: white;
+    &:hover, &:focus {
+      background-color: $blue;
+    }
+    .icon-bar {
+      background-color: white;
+    }
+  }
+}
+

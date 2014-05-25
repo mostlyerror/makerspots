@@ -70,6 +70,24 @@ get '/checkout' do
   end
 end
 
+# Routs for mobile redirect
+
+get '/checkin_mobile/:id' do
+  @loc_id = params[:id]
+  @result = MakerSpots::CheckinUser.run(session[:user].id, @loc_id)
+  if @result[:success?]
+    session[:result] = @result
+    redirect to "/mobile_location/#{params[:id]}"
+  end
+end
+
+get '/checkout_mobile/:id' do
+  @result = MakerSpots::CheckOutUser.run(session[:user].id)
+  if @result[:success?]
+    redirect to "/mobile_location/#{params[:id]}"
+  end
+end
+
 get '/landing' do
   erb :landing, :layout => :landing_layout
 end

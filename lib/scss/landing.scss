@@ -25,14 +25,22 @@
       font-size: 8rem;
       color: $blue;
     }
+    .help-text {
+      color: #CCC;
+      display: block;
+      margin-top: 10px;
+    }
+    .link-toggle {
+      color: $lighter-blue;
+      cursor: pointer;
+    }
+    .link-toggle:hover {
+      text-decoration: underline;
+    }
   }
 }
 
-.signup {
-  // display: none;
-}
-
-.signin {
+.hide {
   display: none;
 }
 

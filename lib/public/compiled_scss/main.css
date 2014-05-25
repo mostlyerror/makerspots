@@ -233,9 +233,21 @@
     font-family: openBold;
     font-size: 8rem;
     color: #599ec8; }
+  /* line 28, ../../scss/landing.scss */
+  .wrapper .form-container .help-text {
+    color: #CCC;
+    display: block;
+    margin-top: 10px; }
+  /* line 33, ../../scss/landing.scss */
+  .wrapper .form-container .link-toggle {
+    color: #7fb4d5;
+    cursor: pointer; }
+  /* line 37, ../../scss/landing.scss */
+  .wrapper .form-container .link-toggle:hover {
+    text-decoration: underline; }
 
-/* line 35, ../../scss/landing.scss */
-.signin {
+/* line 43, ../../scss/landing.scss */
+.hide {
   display: none; }
 
 /* line 1, ../../scss/messages_style.scss */

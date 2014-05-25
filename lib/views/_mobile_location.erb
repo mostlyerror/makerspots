@@ -16,12 +16,12 @@
     <div class="col-sm-12 col-xs-12 col-md-8 col-md-offset-2">
       <!-- Logic to swap checkin/checkout buttons depending on user checkin status -->
         <% if checkins.nil? %>
-          <button><a href="/checkin_mobile/<%= location.id %>">ATTEND</a></button>
+          <a href="/checkin_mobile/<%= location.id %>"><button>ATTEND</button></a>
         <% else %>
           <% if checkins.any?{|checkin| checkin.user_id == session[:user].id } %>
-          <button class="attending"><a href="/checkout_mobile/<%= location.id %>">I'M ATTENDING</a></button>
+          <a href="/checkout_mobile/<%= location.id %>"><button class="attending">I'M ATTENDING</button></a>
           <% else %>
-          <button><a href="/checkin_mobile/<%= location.id %>">ATTEND</a></button>
+          <a href="/checkin_mobile/<%= location.id %>"><button>ATTEND</button></a>
           <% end %>
         <% end %>
     </div>

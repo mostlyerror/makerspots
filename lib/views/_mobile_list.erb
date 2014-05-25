@@ -2,19 +2,28 @@
 <% @result[:locations].each do |location, checkins| %>
   <div class = "row">
     <div class="col-sm-12 col-xs-12" id="<%=location.id %>">
+      <a href="/mobile_location/<%=location.id%>">
       <div class="info_small">
-        <div class="name"><a href="/mobile_location/<%=location.id%>"><%= location.name.upcase %></a> </div>
+        <div class="name"><%= location.name.upcase %> </div>
         <div class="address"><%= location.address %> </div>
         <div class="checkins">
           <div class="checkin-circles">
           <% unless checkins.nil? %>
-            <% (0...checkins.length).each do |i| %>
-              <div class="checkin"></div>
+            <% if checkins.length > 10 %>
+              <div class="counter">+<%= checkins.length - 10 %></div>
+              <% (0...10).each do |i| %>
+                <div class="checkin"></div>
+              <% end %>
+            <% else %>
+              <% (0...(checkins.length)).each do |i| %>
+                <div class="checkin"></div>
+              <% end %>
             <% end %>
           <% end %>
           </div>
         </div>
       </div>
+      </a>
     </div>
   </div>
 <% end %>

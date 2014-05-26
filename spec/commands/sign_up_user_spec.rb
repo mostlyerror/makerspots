@@ -29,9 +29,9 @@ describe 'SignUpUser' do
     expect(MakerSpots::SignUpUser.run(user_data)[:success?]).to eq false
   end
 
-  after(:each) do 
-    @db = SQLite3::Database.new "makerspots.db"
-    @db.execute <<-SQL
+  after(:each) do
+    @db = PG.connect( dbname: 'makerspotsdb' )
+    @db.exec <<-SQL
       DELETE from users
     SQL
   end

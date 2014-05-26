@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'pry-debugger'
 require 'sinatra/reloader'
+require 'sinatra/json'
 require_relative 'makerspots.rb'
 
 enable :sessions
@@ -134,7 +135,7 @@ get '/mobile_test_location' do
   erb :_mobile_location
 end
 
-# Admin Location Log
+# Admin Location Log 
 
 get '/add_location' do
   erb :add_location
@@ -149,6 +150,12 @@ post '/add_location' do
   }
   location = MakerSpots::AddNewLocation.run(data)
   redirect to '/add_location'
+end
+
+get '/locations/json' do
+  result = MakerSpots.db.get_all_locations_json
+  content_type :json
+  json :data => result
 end
 
 # Helper

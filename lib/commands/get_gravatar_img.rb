@@ -9,7 +9,7 @@ class MakerSpots::GetGravatar
 		hash = Digest::MD5.hexdigest(email.downcase)
 		img_url = "http://www.gravatar.com/avatar/#{hash}.#{opts[:filetype] || 'png'}"
 		img_url += "?s=#{opts[:size] || 80}"
-		img_url += "&d=#{opts[:default] || 'http://imgur.com/lKf9ONN'}"
+		img_url += "&d=#{opts[:default] || 'mm'}"
 		{
 			success?: true,
 			gravatar: img_url

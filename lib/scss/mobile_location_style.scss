@@ -67,21 +67,19 @@
     background-color: $light-grey;
     display: inline-block;
     margin-right: 2rem;
-    &.last {
+    &.last-small {
       margin-right: 0;
+      &.counter-small {
+        background: none;
+        color: $light-grey;
+        // text-align: center;
+        opacity: 1;
+        font-size: 6.1rem;
+        border-radius: 0;
+      }
     }
     &:hover {
       opacity: 1;
-    }
-    &.counter {
-      background: none;
-      color: $light-grey;
-      // color: $dark-color;
-      text-align: center;
-      // padding-top: .78rem;
-      opacity: 1;
-      font-size: 6.5rem;
-      margin-bottom: 1rem;
     }
   }
   .info {

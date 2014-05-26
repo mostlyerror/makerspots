@@ -16,25 +16,25 @@
     <div class="col-sm-12 col-xs-12 col-md-8 col-md-offset-2">
       <!-- Logic to swap checkin/checkout buttons depending on user checkin status -->
         <% if checkins.nil? %>
-          <a href="/checkin_mobile/<%= location.id %>"><button>ATTEND</button></a>
+          <button id="<%= location.id %>">ATTEND</button>
         <% else %>
           <% if checkins.any?{|checkin| checkin.user_id == session[:user].id } %>
-          <a href="/checkout_mobile/<%= location.id %>"><button class="attending">I'M ATTENDING</button></a>
+          <button class="attending" id="<%= location.id %>">I'M ATTENDING</button>
           <% else %>
-          <a href="/checkin_mobile/<%= location.id %>"><button>ATTEND</button></a>
+          <button id="<%= location.id %>">ATTEND</button>
           <% end %>
         <% end %>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row checkin-row">
     <div class="col-sm-12 col-xs-12 col-md-8 col-md-offset-2">
       <div class="image-circles">
          <% if checkins.nil? %>
             <div class="image-holder"></div>
             <div class="image-holder"></div>
             <div class="image-holder"></div>
-            <div class="image-holder last"></div>
+            <div class="image-holder last-small"></div>
           <% else %>
             <% (0..2).each do |i| %>
               <% if checkins[i] %>
@@ -46,9 +46,9 @@
               <% end %>
             <% end %>
             <% if checkins[3] %>
-              <div class="image-holder counter last">+<%= checkins.length - 3 %></div>
+              <div class="image-holder last-small counter-small">+<%= checkins.length - 3 %></div>
             <% else %>
-              <div class="image-holder last"></div>
+              <div class="image-holder last-small"></div>
             <% end %>
           <% end %>
       </div>

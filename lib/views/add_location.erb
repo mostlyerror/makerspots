@@ -5,4 +5,21 @@
   <input type ='text' name="description" placeholder="DESCRIPTION"/><br>
   <input type="submit" value="SUBMIT">
 </form>
-<a href="/location_list">Show All Locations</a>
+<a href="/location_list"><button>Show All Locations</button></a>
+
+<button id="show-locations">locations/json</button>
+
+<pre id="locations-raw" style="font-size: 10px; overflow: auto;"></pre>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+		$("#show-locations").click(function(event) {
+			$.get('/locations/json', function(response) {
+				$('#locations-raw').html(JSON.stringify(response.data, undefined, 2));
+			});			
+		});
+	});
+
+</script>

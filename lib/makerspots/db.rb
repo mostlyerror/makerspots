@@ -110,6 +110,20 @@ class MakerSpots::DB
     locations_holder
   end
 
+  def get_all_locations_json
+    records = @db.execute("SELECT * FROM locations")
+    records.map! do |record|
+      {
+        id: record[0],
+        name: record[1],
+        description: record[2],
+        phone: record[3],
+        address: record[4]
+      }
+    end
+    records
+  end
+
   def build_user(data)
     MakerSpots::User.new(data)
   end

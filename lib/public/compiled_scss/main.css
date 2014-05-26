@@ -1,424 +1,67 @@
-@font-face {
-  font-family: openRegular;
-  src: url(../custom_fonts/Open_Sans/OpenSans-Regular.ttf); }
-@font-face {
-  font-family: openLight;
-  src: url(../custom_fonts/Open_Sans/OpenSans-Light.ttf); }
-@font-face {
-  font-family: openBold;
-  src: url(../custom_fonts/Open_Sans/OpenSans-Bold.ttf); }
-/* line 1, ../../scss/navbar_override.scss */
-.nav-color {
-  background: #7fb4d5;
-  border-bottom: none; }
+/*
+Syntax error: Invalid CSS after "}": expected selector or at-rule, was "<<<<<<< HEAD"
+        on line 43 of lib/scss/landing.scss
+        from line 13 of ./lib/scss/main.scss
 
-/* line 5, ../../scss/navbar_override.scss */
-#brand-text {
-  font-size: 3rem;
-  font-family: openBold;
-  text-decoration: none;
-  color: white; }
-  /* line 6, ../../scss/mixins.scss */
-  #brand-text:hover {
-    text-decoration: none;
-    color: #599ec8; }
+38:       text-decoration: underline;
+39:     }
+40:   }
+41: }
+42: 
+43: <<<<<<< HEAD
+44: .signup {
+45:   display: none;
+46: }
+47: 
+48: .signin {
 
-/* line 8, ../../scss/navbar_override.scss */
-#drop-nav {
-  font-size: 3rem;
-  font-family: openBold;
-  text-decoration: none;
-  color: white; }
-  /* line 6, ../../scss/mixins.scss */
-  #drop-nav:hover {
-    text-decoration: none;
-    color: #599ec8; }
-
-/* line 11, ../../scss/navbar_override.scss */
-#user-nav {
-  font-size: 3rem;
-  font-family: openBold;
-  text-decoration: none;
-  color: white; }
-  /* line 6, ../../scss/mixins.scss */
-  #user-nav:hover {
-    text-decoration: none;
-    color: #599ec8; }
-
-/* line 14, ../../scss/navbar_override.scss */
-#drop-menu {
-  background-color: #333333; }
-  /* line 17, ../../scss/navbar_override.scss */
-  #drop-menu li a {
-    font-size: 3rem;
-    font-family: openBold;
-    text-decoration: none;
-    color: white; }
-    /* line 6, ../../scss/mixins.scss */
-    #drop-menu li a:hover {
-      text-decoration: none;
-      color: #599ec8; }
-
-/* line 22, ../../scss/navbar_override.scss */
-#sign {
-  font-size: 3rem;
-  font-family: openBold;
-  text-decoration: none;
-  color: white; }
-  /* line 6, ../../scss/mixins.scss */
-  #sign:hover {
-    text-decoration: none;
-    color: #599ec8; }
-
-/* line 25, ../../scss/navbar_override.scss */
-#spots {
-  font-family: openLight; }
-
-/* line 29, ../../scss/navbar_override.scss */
-.navbar-header #nav-toggle {
-  border-color: white; }
-  /* line 31, ../../scss/navbar_override.scss */
-  .navbar-header #nav-toggle:hover, .navbar-header #nav-toggle:focus {
-    background-color: #599ec8; }
-  /* line 34, ../../scss/navbar_override.scss */
-  .navbar-header #nav-toggle .icon-bar {
-    background-color: white; }
-
-/* line 1, ../../scss/desktop_style.scss */
-.desktop-contain {
-  margin-top: 1rem; }
-
-/* line 5, ../../scss/desktop_style.scss */
-.about, .image {
-  height: 25rem; }
-
-/* line 11, ../../scss/desktop_style.scss */
-.about {
-  font-family: openBold;
-  font-size: 4.5rem;
-  text-align: center; }
-  /* line 15, ../../scss/desktop_style.scss */
-  .about .title {
-    height: 33%; }
-  /* line 18, ../../scss/desktop_style.scss */
-  .about .image-circles {
-    max-width: 40rem;
-    margin: 0 auto;
-    height: 33%; }
-    /* line 22, ../../scss/desktop_style.scss */
-    .about .image-circles .image-holder {
-      opacity: .8;
-      border-radius: 100%;
-      height: 8rem;
-      width: 8rem;
-      background-color: #c7c9cb;
-      display: inline-block;
-      float: left;
-      margin-right: 2rem; }
-      /* line 31, ../../scss/desktop_style.scss */
-      .about .image-circles .image-holder:hover {
-        opacity: 1; }
-      /* line 34, ../../scss/desktop_style.scss */
-      .about .image-circles .image-holder.counter {
-        background: none;
-        color: #c7c9cb;
-        text-align: center;
-        opacity: 1;
-        font-size: 6.5rem;
-        margin-bottom: 1rem;
-        cursor: pointer; }
-  /* line 47, ../../scss/desktop_style.scss */
-  .about button {
-    background-color: #599ec8;
-    font-size: 3rem;
-    border: none;
-    color: white;
-    width: 90%; }
-    /* line 53, ../../scss/desktop_style.scss */
-    .about button:hover {
-      background-color: #3b86b3; }
-    /* line 56, ../../scss/desktop_style.scss */
-    .about button.attending {
-      background-color: #fb883d; }
-    /* line 59, ../../scss/desktop_style.scss */
-    .about button a {
-      text-decoration: none;
-      color: white; }
-    /* line 63, ../../scss/desktop_style.scss */
-    .about button a:hover {
-      text-decoration: none;
-      color: white; }
-
-/* line 69, ../../scss/desktop_style.scss */
-.image {
-  background-size: cover;
-  cursor: pointer; }
-
-/* line 75, ../../scss/desktop_style.scss */
-.description {
-  display: none;
-  background-color: #7fb4d5;
-  padding: 4rem;
-  color: white; }
-  /* line 83, ../../scss/desktop_style.scss */
-  .description span {
-    font-family: openRegular;
-    font-size: 1.5rem; }
-  /* line 87, ../../scss/desktop_style.scss */
-  .description .heading {
-    font-family: openBold; }
-  /* line 90, ../../scss/desktop_style.scss */
-  .description .about-drop {
-    clear: both;
-    font-family: openBold;
-    font-size: 2.5rem; }
-  /* line 95, ../../scss/desktop_style.scss */
-  .description .info {
-    display: block;
-    clear: both;
-    margin-top: 0; }
-  /* line 100, ../../scss/desktop_style.scss */
-  .description .contact {
-    float: left;
-    margin-right: 2rem;
-    margin-bottom: 2rem; }
-
-@media (max-width: 1200px) {
-  /* line 108, ../../scss/desktop_style.scss */
-  .about .title {
-    font-size: 0.75em; } }
-/* line 113, ../../scss/desktop_style.scss */
-.user-overflow {
-  display: none;
-  height: 10rem; }
-  /* line 116, ../../scss/desktop_style.scss */
-  .user-overflow .image-holder {
-    margin-top: 1rem;
-    opacity: .8;
-    border-radius: 100%;
-    height: 8rem;
-    width: 8rem;
-    background-color: #c7c9cb;
-    display: inline-block;
-    float: right;
-    margin-right: 2rem; }
-    /* line 126, ../../scss/desktop_style.scss */
-    .user-overflow .image-holder:hover {
-      opacity: 1; }
-
-/* line 1, ../../scss/landing.scss */
-.wrapper {
-  with: 100%;
-  height: 125rem;
-  padding-top: 15rem;
-  background-color: #333333;
-  margin-top: -60px; }
-  /* line 8, ../../scss/landing.scss */
-  .wrapper .form-container input {
-    height: 5rem;
-    width: 96%; }
-  /* line 12, ../../scss/landing.scss */
-  .wrapper .form-container input[type=text], .wrapper .form-container input[type=password] {
-    padding-left: 2rem;
-    margin-bottom: 1rem; }
-  /* line 16, ../../scss/landing.scss */
-  .wrapper .form-container input[type=submit] {
-    border: none;
-    background-color: #599ec8;
-    color: white;
-    font-family: openBold;
-    font-size: 3rem; }
-  /* line 23, ../../scss/landing.scss */
-  .wrapper .form-container .header {
-    font-family: openBold;
-    font-size: 8rem;
-    color: #599ec8; }
-
-/* line 31, ../../scss/landing.scss */
-.signup {
-  display: none; }
-
-/* line 1, ../../scss/messages_style.scss */
-.message {
-  height: 5rem;
-  width: 40rem;
-  margin: 0 auto;
-  text-align: center;
-  padding-top: 1rem;
-  font-family: openBold;
-  font-size: 2rem;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px; }
-  /* line 13, ../../scss/messages_style.scss */
-  .message.error {
-    color: white;
-    background-color: #fb883d; }
-
-/* line 2, ../../scss/mobile_location_style.scss */
-.small-location {
-  padding: 0;
-  font-family: openBold; }
-  /* line 4, ../../scss/mobile_location_style.scss */
-  .small-location .row {
-    width: 100%;
-    margin: 0;
-    padding-left: 0;
-    padding-right: 0; }
-    /* line 9, ../../scss/mobile_location_style.scss */
-    .small-location .row .col-sm-12, .small-location .row .col-xs-12 {
-      padding: 0; }
-  /* line 14, ../../scss/mobile_location_style.scss */
-  .small-location .image-small {
-    height: 25rem;
-    background-size: cover;
-    width: 100%;
-    margin-bottom: 1rem; }
-    /* line 19, ../../scss/mobile_location_style.scss */
-    .small-location .image-small .filler {
-      height: 75%; }
-    /* line 22, ../../scss/mobile_location_style.scss */
-    .small-location .image-small .name {
-      background-color: rgba(20, 20, 20, 0.7);
-      color: white;
-      text-align: right;
-      font-size: 3rem;
-      padding-right: 1rem;
-      padding-top: 1.2rem;
-      height: 25%; }
-  /* line 32, ../../scss/mobile_location_style.scss */
-  .small-location button {
-    background-color: #599ec8;
-    color: white;
-    border: none;
-    width: 90%;
-    max-width: 50rem;
-    font-size: 3rem;
-    display: block;
-    margin: 0 auto; }
-    /* line 41, ../../scss/mobile_location_style.scss */
-    .small-location button:hover {
-      background-color: #3b86b3; }
-    /* line 44, ../../scss/mobile_location_style.scss */
-    .small-location button.attending {
-      background-color: #fb883d; }
-    /* line 47, ../../scss/mobile_location_style.scss */
-    .small-location button a {
-      text-decoration: none;
-      color: white; }
-    /* line 51, ../../scss/mobile_location_style.scss */
-    .small-location button a:hover {
-      text-decoration: none;
-      color: white; }
-  /* line 56, ../../scss/mobile_location_style.scss */
-  .small-location .image-circles {
-    display: block;
-    max-width: 35.25rem;
-    margin: 0 auto;
-    margin-top: 1rem; }
-  /* line 62, ../../scss/mobile_location_style.scss */
-  .small-location .image-holder {
-    margin: 0 auto;
-    border-radius: 100%;
-    height: 7rem;
-    width: 7rem;
-    background-color: #c7c9cb;
-    display: inline-block;
-    margin-right: 2rem; }
-    /* line 70, ../../scss/mobile_location_style.scss */
-    .small-location .image-holder.last-small {
-      margin-right: 0; }
-      /* line 72, ../../scss/mobile_location_style.scss */
-      .small-location .image-holder.last-small.counter-small {
-        background: none;
-        color: #c7c9cb;
-        opacity: 1;
-        font-size: 6.1rem;
-        border-radius: 0; }
-    /* line 81, ../../scss/mobile_location_style.scss */
-    .small-location .image-holder:hover {
-      opacity: 1; }
-  /* line 85, ../../scss/mobile_location_style.scss */
-  .small-location .info {
-    padding-right: 1.5rem;
-    font-size: 1.5rem; }
-    /* line 88, ../../scss/mobile_location_style.scss */
-    .small-location .info span {
-      display: block;
-      text-align: right; }
-  /* line 93, ../../scss/mobile_location_style.scss */
-  .small-location .about {
-    font-size: 5rem;
-    text-align: left;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem; }
-    /* line 98, ../../scss/mobile_location_style.scss */
-    .small-location .about span {
-      display: block; }
-    /* line 101, ../../scss/mobile_location_style.scss */
-    .small-location .about .title {
-      margin-bottom: 0rem; }
-    /* line 104, ../../scss/mobile_location_style.scss */
-    .small-location .about .descript-txt {
-      background-color: none;
-      font-size: 1.7rem;
-      font-family: openLight; }
-
-/* line 2, ../../scss/mobile_list_style.scss */
-.container.small-info {
-  margin-left: 0;
-  margin-right: 0;
-  width: 100%; }
-  /* line 6, ../../scss/mobile_list_style.scss */
-  .container.small-info .row {
-    border-bottom: 1px solid #333333;
-    cursor: pointer; }
-/* line 11, ../../scss/mobile_list_style.scss */
-.container a {
-  text-decoration: none;
-  color: #333333; }
-/* line 15, ../../scss/mobile_list_style.scss */
-.container a:hover {
-  text-decoration: none;
-  color: #333333; }
-
-/* line 21, ../../scss/mobile_list_style.scss */
-.info_small {
-  color: #333333;
-  font-family: openBold; }
-  /* line 24, ../../scss/mobile_list_style.scss */
-  .info_small .name {
-    font-size: 3rem; }
-  /* line 27, ../../scss/mobile_list_style.scss */
-  .info_small .address {
-    font-size: 1.6rem;
-    display: inline-block;
-    float: left; }
-  /* line 32, ../../scss/mobile_list_style.scss */
-  .info_small .checkins {
-    text-align: right;
-    display: inline-block;
-    float: right; }
-  /* line 38, ../../scss/mobile_list_style.scss */
-  .info_small .checkin-circles .checkin {
-    height: 1.2rem;
-    width: 1.2rem;
-    border-radius: 100%;
-    background-color: #599ec8;
-    float: right;
-    margin-left: .5rem;
-    margin-bottom: 1rem; }
-  /* line 47, ../../scss/mobile_list_style.scss */
-  .info_small .checkin-circles .counter {
-    background-color: none;
-    color: #333333;
-    font-family: openLight;
-    float: right;
-    margin-top: -.3rem;
-    margin-left: .5rem; }
-
-/* line 22, ../../scss/main.scss */
-body {
-  background-color: #f7f7f7;
-  padding-top: 50px; }
+Backtrace:
+lib/scss/landing.scss:43
+./lib/scss/main.scss:13
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/scss/parser.rb:1312:in `expected'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/scss/parser.rb:1248:in `expected'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/scss/parser.rb:42:in `parse'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/engine.rb:409:in `_to_tree'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/engine.rb:305:in `to_tree'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/tree/visitors/perform.rb:295:in `block in visit_import'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/stack.rb:88:in `block in with_import'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/stack.rb:121:in `with_frame'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/stack.rb:88:in `with_import'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/tree/visitors/perform.rb:294:in `visit_import'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/tree/visitors/perform.rb:152:in `block in visit'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/stack.rb:79:in `block in with_base'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/stack.rb:121:in `with_frame'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/stack.rb:79:in `with_base'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/tree/visitors/perform.rb:152:in `visit'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/tree/visitors/base.rb:52:in `map'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/tree/visitors/perform.rb:161:in `block in visit_children'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/tree/visitors/perform.rb:173:in `with_environment'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/tree/visitors/perform.rb:160:in `visit_children'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/tree/visitors/perform.rb:180:in `visit_root'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/tree/visitors/perform.rb:151:in `visit'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/tree/root_node.rb:20:in `render'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/engine.rb:274:in `render'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/plugin/compiler.rb:414:in `update_stylesheet'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/plugin/compiler.rb:189:in `block in update_stylesheets'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/plugin/compiler.rb:186:in `each'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/plugin/compiler.rb:186:in `update_stylesheets'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/plugin/compiler.rb:393:in `on_file_changed'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/lib/sass/plugin/compiler.rb:248:in `block in watch'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/vendor/listen/lib/listen/listener.rb:252:in `call'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/vendor/listen/lib/listen/listener.rb:252:in `on_change'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/vendor/listen/lib/listen/adapters/polling.rb:48:in `call'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/vendor/listen/lib/listen/adapters/polling.rb:48:in `poll_changed_directories'
+/Users/canaandavis/.rvm/gems/ruby-2.1.0/gems/sass-3.3.7/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Invalid CSS after \"}\": expected selector or at-rule, was \"<<<<<<< HEAD\"\A         on line 43 of lib/scss/landing.scss\A         from line 13 of ./lib/scss/main.scss\A \A 38:       text-decoration: underline;\A 39:     }\A 40:   }\A 41: }\A 42: \A 43: <<<<<<< HEAD\A 44: .signup {\A 45:   display: none;\A 46: }\A 47: \A 48: .signin {"; }

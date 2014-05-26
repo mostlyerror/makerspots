@@ -3,26 +3,28 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-6 col-md-offset-3 form-container signin">
+      <div class="col-md-6 col-md-offset-3 form-container signin hide">
         <span class="header">SIGN IN</span>
         <form action = '/new_user_session' method = "post">
           <input type = 'text' id="email" name="email" placeholder="EMAIL"/><br>
           <input type = 'password' id="password" name="password" placeholder="PASSWORD"/><br>
           <input type="submit" value="SIGN IN">
+          <div class="help-text">Don't have an account? <span class="link-toggle">Sign Up.</span></div>
+        </form>
+      </div>
+      <div class="col-md-6 col-md-offset-3 form-container signup">
+        <span class="header">SIGN UP</span><br>
+        <form action = '/' method = "post" id="landing-form">
+          <input type = 'text' id="name" name="name" placeholder="NAME" />
+          <input type = 'text' id="email" name="email" placeholder="EMAIL" />
+          <input type = 'password' id="password" name="password" placeholder="PASSWORD" />
+          <input type="submit" value="SIGN UP">
+          <div class="help-text">Already have an account? <span class="link-toggle">Sign In.</span></div>
         </form>
       </div>
     </div>
-
-    <div class="col-md-6 col-md-offset-3 form-container signup">
-      <span class="header">SIGN UP</span>
-      <form action = '/' method = "post" id="landing-form">
-        <input type = 'text' id="name" name="name" placeholder="NAME" />
-        <input type = 'text' id="email" name="email" placeholder="EMAIL" />
-        <input type = 'password' id="password" name="password" placeholder="PASSWORD" />
-        <input type="submit" value="SIGN UP">
-      </form>
-    </div>
   </div>
+
 
 </div>
 

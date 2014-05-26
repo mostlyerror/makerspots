@@ -54,7 +54,7 @@ post '/' do
   end
 end
 
-get '/checkin/:id' do
+post '/checkin/:id' do
   @loc_id = params[:id]
   @result = MakerSpots::CheckinUser.run(session[:user].id, @loc_id)
   if @result[:success?]
@@ -63,7 +63,7 @@ get '/checkin/:id' do
   end
 end
 
-get '/checkout' do
+post '/checkout' do
   @result = MakerSpots::CheckOutUser.run(session[:user].id)
   if @result[:success?]
     redirect to '/'
@@ -72,20 +72,22 @@ end
 
 # Routs for mobile redirect
 
-get '/checkin_mobile/:id' do
+post '/checkin_mobile/:id' do
   @loc_id = params[:id]
   @result = MakerSpots::CheckinUser.run(session[:user].id, @loc_id)
-  if @result[:success?]
-    session[:result] = @result
-    redirect to "/mobile_location/#{params[:id]}"
-  end
+  redirect to("/mobile_checkin_snipit/#{params[:id]}")
 end
 
-get '/checkout_mobile/:id' do
+post '/checkout_mobile/:id' do
   @result = MakerSpots::CheckOutUser.run(session[:user].id)
-  if @result[:success?]
-    redirect to "/mobile_location/#{params[:id]}"
-  end
+  redirect to("/mobile_checkin_snipit/#{params[:id]}")
+end
+
+# Test for returning HTML
+
+get  '/mobile_checkin_snipit/:id' do
+  @checkins = MakerSpots::ShowLocationById.run(params[:id])[:checkins]
+  erb :_mobile_checkin_snipit, :layout => false
 end
 
 get '/landing' do

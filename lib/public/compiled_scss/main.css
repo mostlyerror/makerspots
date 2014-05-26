@@ -234,8 +234,8 @@
     font-size: 8rem;
     color: #599ec8; }
 
-/* line 35, ../../scss/landing.scss */
-.signin {
+/* line 31, ../../scss/landing.scss */
+.signup {
   display: none; }
 
 /* line 1, ../../scss/messages_style.scss */
@@ -327,40 +327,39 @@
     display: inline-block;
     margin-right: 2rem; }
     /* line 70, ../../scss/mobile_location_style.scss */
-    .small-location .image-holder.last {
+    .small-location .image-holder.last-small {
       margin-right: 0; }
-    /* line 73, ../../scss/mobile_location_style.scss */
+      /* line 72, ../../scss/mobile_location_style.scss */
+      .small-location .image-holder.last-small.counter-small {
+        background: none;
+        color: #c7c9cb;
+        opacity: 1;
+        font-size: 6.1rem;
+        border-radius: 0; }
+    /* line 81, ../../scss/mobile_location_style.scss */
     .small-location .image-holder:hover {
       opacity: 1; }
-    /* line 76, ../../scss/mobile_location_style.scss */
-    .small-location .image-holder.counter {
-      background: none;
-      color: #c7c9cb;
-      text-align: center;
-      opacity: 1;
-      font-size: 6.5rem;
-      margin-bottom: 1rem; }
-  /* line 87, ../../scss/mobile_location_style.scss */
+  /* line 85, ../../scss/mobile_location_style.scss */
   .small-location .info {
     padding-right: 1.5rem;
     font-size: 1.5rem; }
-    /* line 90, ../../scss/mobile_location_style.scss */
+    /* line 88, ../../scss/mobile_location_style.scss */
     .small-location .info span {
       display: block;
       text-align: right; }
-  /* line 95, ../../scss/mobile_location_style.scss */
+  /* line 93, ../../scss/mobile_location_style.scss */
   .small-location .about {
     font-size: 5rem;
     text-align: left;
     padding-left: 1.5rem;
     padding-right: 1.5rem; }
-    /* line 100, ../../scss/mobile_location_style.scss */
+    /* line 98, ../../scss/mobile_location_style.scss */
     .small-location .about span {
       display: block; }
-    /* line 103, ../../scss/mobile_location_style.scss */
+    /* line 101, ../../scss/mobile_location_style.scss */
     .small-location .about .title {
       margin-bottom: 0rem; }
-    /* line 106, ../../scss/mobile_location_style.scss */
+    /* line 104, ../../scss/mobile_location_style.scss */
     .small-location .about .descript-txt {
       background-color: none;
       font-size: 1.7rem;

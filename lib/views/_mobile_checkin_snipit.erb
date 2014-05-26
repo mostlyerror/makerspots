@@ -1,0 +1,27 @@
+<div class="col-sm-12 col-xs-12 col-md-8 col-md-offset-2">
+  <div class="image-circles">
+     <% if @checkins.nil? %>
+        <div class="image-holder"></div>
+        <div class="image-holder"></div>
+        <div class="image-holder"></div>
+        <div class="image-holder last-small"></div>
+      <% else %>
+        <% (0..2).each do |i| %>
+          <% if @checkins[i] %>
+            <% result = MakerSpots::GetUserById.run(@checkins[i].user_id) %>
+            <% gravatar = MakerSpots::GetGravatar.run(result[:user].email) %>
+            <div class="image-holder" style="background-image: url('<%=gravatar[:gravatar]%>') "></div>
+          <% else %>
+            <div class="image-holder"></div>
+          <% end %>
+        <% end %>
+        <% if @checkins[3] %>
+          <div class="image-holder last-small counter-small">
+            +<%= @checkins.length - 3 %>
+          </div>
+        <% else %>
+          <div class="image-holder last-small"></div>
+        <% end %>
+      <% end %>
+  </div>
+</div>

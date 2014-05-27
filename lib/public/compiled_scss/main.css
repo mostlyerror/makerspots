@@ -336,42 +336,43 @@
     height: 7rem;
     width: 7rem;
     background-color: #c7c9cb;
+    background-size: cover;
     display: inline-block;
     margin-right: 2rem; }
-    /* line 70, ../../scss/mobile_location_style.scss */
+    /* line 71, ../../scss/mobile_location_style.scss */
     .small-location .image-holder.last-small {
       margin-right: 0; }
-      /* line 72, ../../scss/mobile_location_style.scss */
+      /* line 73, ../../scss/mobile_location_style.scss */
       .small-location .image-holder.last-small.counter-small {
         background: none;
         color: #c7c9cb;
         opacity: 1;
         font-size: 6.1rem;
         border-radius: 0; }
-    /* line 81, ../../scss/mobile_location_style.scss */
+    /* line 82, ../../scss/mobile_location_style.scss */
     .small-location .image-holder:hover {
       opacity: 1; }
-  /* line 85, ../../scss/mobile_location_style.scss */
+  /* line 86, ../../scss/mobile_location_style.scss */
   .small-location .info {
     padding-right: 1.5rem;
     font-size: 1.5rem; }
-    /* line 88, ../../scss/mobile_location_style.scss */
+    /* line 89, ../../scss/mobile_location_style.scss */
     .small-location .info span {
       display: block;
       text-align: right; }
-  /* line 93, ../../scss/mobile_location_style.scss */
+  /* line 94, ../../scss/mobile_location_style.scss */
   .small-location .about {
     font-size: 5rem;
     text-align: left;
     padding-left: 1.5rem;
     padding-right: 1.5rem; }
-    /* line 98, ../../scss/mobile_location_style.scss */
+    /* line 99, ../../scss/mobile_location_style.scss */
     .small-location .about span {
       display: block; }
-    /* line 101, ../../scss/mobile_location_style.scss */
+    /* line 102, ../../scss/mobile_location_style.scss */
     .small-location .about .title {
       margin-bottom: 0rem; }
-    /* line 104, ../../scss/mobile_location_style.scss */
+    /* line 105, ../../scss/mobile_location_style.scss */
     .small-location .about .descript-txt {
       background-color: none;
       font-size: 1.7rem;

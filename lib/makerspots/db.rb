@@ -1,4 +1,5 @@
 require 'pry'
+require 'sqlite3'
 class MakerSpots::DB
 
   def initialize
@@ -283,10 +284,10 @@ class MakerSpots::DB
       SET checked_in = ?
       WHERE user_id = ?", 0, id
     )
-
     data = @db.execute(
       "SELECT * FROM checkins where id = ?", id
     ).flatten
+
     data_hash = {
       id: data[0],
       location_id: data[1],

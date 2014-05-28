@@ -1,4 +1,4 @@
-require 'pg'
+require 'sqlite3'
 
 module MakerSpots
 end
@@ -19,5 +19,3 @@ require_relative './commands/get_gravatar_img.rb'
 require_relative './commands/get_user_by_id.rb'
 require_relative './commands/show_location_by_id.rb'
 require_relative 'app.rb'
-
-

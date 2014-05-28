@@ -36,7 +36,7 @@
           <button id="<%= location.id %>">ATTEND</button>
         <% else %>
           <% if checkins.any?{|checkin| checkin.user_id == session[:user].id } %>
-          <button class="attending" id="<%= location.id %>">I'M ATTENDING</button>
+          <a href="/checkout"><button class="attending" id="<%= location.id %>">I'M ATTENDING</button></a>
           <% else %>
           <button id="<%= location.id %>">ATTEND</button>
           <% end %>
@@ -74,7 +74,7 @@
           <button id="<%= location.id %>">ATTEND</button>
         <% else %>
           <% if checkins.any?{|checkin| checkin.user_id == session[:user].id } %>
-          <button class="attending" id="<%= location.id %>">I'M ATTENDING</button>
+          <a href="/checkout"><button class="attending" id="<%= location.id %>">I'M ATTENDING</button></a>
           <% else %>
           <button id="<%= location.id %>">ATTEND</button>
           <% end %>

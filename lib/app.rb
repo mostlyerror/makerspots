@@ -64,7 +64,7 @@ post '/checkin/:id' do
   end
 end
 
-post '/checkout' do
+get '/checkout' do
   @result = MakerSpots::CheckOutUser.run(session[:user].id)
   if @result[:success?]
     redirect to '/'
@@ -137,7 +137,7 @@ get '/mobile_test_location' do
   erb :_mobile_location
 end
 
-# Admin Location Log 
+# Admin Location Log
 
 get '/add_location' do
   erb :add_location

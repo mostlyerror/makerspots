@@ -30,8 +30,8 @@ describe 'ShowAllLocations' do
   end
 
   it 'returns an error when there are no locations' do
-    @db = PG.connect( dbname: 'makerspotsdb' )
-    @db.exec <<-SQL
+    @db = SQLite3::Database.new "makerspots.db"
+    @db.execute <<-SQL
       DELETE from locations
     SQL
     expect(MakerSpots::ShowAllLocations.run[:success?]).to eq(false)
@@ -39,8 +39,8 @@ describe 'ShowAllLocations' do
 
 
     after(:each) do
-      @db = PG.connect( dbname: 'makerspotsdb' )
-      @db.exec <<-SQL
+      @db = SQLite3::Database.new "makerspots.db"
+      @db.execute <<-SQL
         DELETE from locations
       SQL
 

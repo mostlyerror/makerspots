@@ -32,8 +32,8 @@ describe 'SignInUser' do
   end
 
   after(:each) do
-    @db = PG.connect( dbname: 'makerspotsdb' )
-    @db.exec <<-SQL
+    @db = SQLite3::Database.new "makerspots.db"
+    @db.execute <<-SQL
       DELETE from users
     SQL
   end

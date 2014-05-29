@@ -19,14 +19,11 @@ describe 'ShowAllLocations' do
     expect(user[:user].name).to eq("Jacoub")
   end
 
+  after(:each) do
+    @db = SQLite3::Database.new "makerspots.db"
+    @db.execute <<-SQL
+      DELETE from users
+    SQL
 
-
-
-    after(:each) do
-      @db = SQLite3::Database.new "makerspots.db"
-      @db.execute <<-SQL
-        DELETE from users
-      SQL
-
-    end
+  end
 end

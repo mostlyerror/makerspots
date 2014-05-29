@@ -182,5 +182,6 @@ def name_cleaner(string)
   # Input string (location.name)
   # Output is url friendly version of name. Must match image filename in images/locations
   cleaned = string.gsub(' ', '-')
+  cleaned = cleaned.gsub("'", '')
   cleaned.downcase!
 end

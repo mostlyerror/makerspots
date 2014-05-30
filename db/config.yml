@@ -1,0 +1,11 @@
+development:
+  adapter: sqlite3
+  database: makerspots_dev
+  pool: 5
+  timeout: 5000
+
+test:
+  adapter: sqlite3
+  database: makerspots.db
+  pool: 5
+  timeout: 5000

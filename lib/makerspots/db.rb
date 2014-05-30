@@ -46,7 +46,7 @@ class MakerSpots::DB
   def create_location(data)
     # Input: hash, data, name[string], description[string], phone[string], address[string]. Name, desc, address required
     # Output: Location object
-    
+
     @db.execute(
       "INSERT INTO locations (name, description, phone, address)
       VALUES (?,?,?,?)",
@@ -300,8 +300,8 @@ class MakerSpots::DB
   end
 end
 
-module MakerSpots
-  def self.db
-    @___db_instance ||= DB.new
-  end
-end
+# module MakerSpots
+#   def self.db
+#     @___db_instance ||= DB.new
+#   end
+# end

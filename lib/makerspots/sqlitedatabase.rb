@@ -41,7 +41,9 @@ class SQLiteDatabase
 
   def get_user_by_email(email)
     ar_user = User.find_by(email: email)
-    build_user(ar_user)
+    if ar_user
+      build_user(ar_user)
+    end
   end
 
   # Location Methods
@@ -77,8 +79,12 @@ class SQLiteDatabase
   end
 
   def get_checkins_by_user(user_id)
-    ar_checkin = Checkin.where(user_id: user_id, checked_in: true)
-    build_checkin(ar_checkin.first)
+    ar_checkin = Checkin.where(user_id: user_id, checked_in: true).first
+    if ar_checkin
+      build_checkin(ar_checkin)
+    else
+      return { error: "No active checkins found" }
+    end
   end
 
   def get_checkins_by_location(location_id)

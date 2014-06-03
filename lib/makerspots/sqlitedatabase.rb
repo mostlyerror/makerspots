@@ -23,8 +23,6 @@ class SQLiteDatabase
     has_many :checkins
   end
 
-  # User Methods
-
   def build_user(attrs)
     MakerSpots::User.new(attrs)
   end
@@ -46,8 +44,6 @@ class SQLiteDatabase
     end
   end
 
-  # Location Methods
-
   def build_location(attrs)
     MakerSpots::Location.new(attrs)
   end
@@ -66,8 +62,6 @@ class SQLiteDatabase
     ar_locations = Location.all
     ar_locations.map { |location| build_location(location) }
   end
-
-  #Checkin Methods
 
   def build_checkin(attrs)
     MakerSpots::Checkin.new(attrs)

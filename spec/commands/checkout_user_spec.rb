@@ -21,7 +21,7 @@ describe 'CheckinUser' do
       expect(result[:success?]).to eq true
       expect(result[:message]).to eq 'Checked out successfully'
       check_in = MakerSpots.db.get_checkins_by_user(@user.id)
-      expect(check_in[:error]).should be_true
+      expect(check_in).to include(:error)
     end
   end
 

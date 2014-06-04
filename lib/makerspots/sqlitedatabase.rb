@@ -68,6 +68,12 @@ class SQLiteDatabase
     ar_locations.map { |location| build_location(location) }
   end
 
+  def get_locations_by_category(cat_id)
+    ar_locations = Location.where(category_id: cat_id)
+
+    ar_locations.map { |location| build_location(location) }
+  end
+
   def build_checkin(attrs)
     MakerSpots::Checkin.new(attrs)
   end

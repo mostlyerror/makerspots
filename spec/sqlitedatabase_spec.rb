@@ -21,7 +21,8 @@ describe 'database' do
         name: "Location",
         description: "Description goes here",
         phone: "972.898.0722",
-        address: 'Address here'
+        address: 'Address here',
+        category_id: 1
         )
     end
 
@@ -72,6 +73,22 @@ describe 'database' do
       expect(location.description).to eq @location.description
       expect(location.phone).to eq @location.phone
       expect(location.address).to eq @location.address
+    end
+
+    it 'gets locations by category' do
+      location2 =
+        MakerSpots.db.create_location(
+                name: "Location 2",
+                description: "Description goes here too",
+                phone: "972.898.0711",
+                address: 'An Address',
+                category_id: 1
+                )
+
+      locations = MakerSpots.db.get_locations_by_category(1)
+      expect(locations.length).to eq 2
+      expect(locations.first).to be_a(Location)
+      expect(locations.first.name).to eq "Location" 
     end
 
     after(:each) do
@@ -150,7 +167,6 @@ describe 'database' do
       expect(@checkin.location_id).to eq @location.id
       expect(@checkin.user_id).to eq @user.id
       expect(@checkin.checked_in).to eq true
-      # TODO: test the datetime is assigned correctly.
       expect(@checkin.created_at).not_to eq nil
     end
 
@@ -232,6 +248,7 @@ describe 'database' do
       category = MakerSpots.db.create_category(name: "Coffee")
 
       expect(category).to be_a(Category)
+      expect(category.name).to eq "Coffee"
     end
 
     after(:each) do

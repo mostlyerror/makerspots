@@ -17,12 +17,15 @@ describe 'database' do
 
   describe 'locations' do
     before(:each) do
+      @category = MakerSpots.db.create_category(
+      name: "Category"
+      )
       @location = MakerSpots.db.create_location(
-        name: "Location",
+        {name: "Location",
         description: "Description goes here",
         phone: "972.898.0722",
-        address: 'Address here',
-        category_id: 1
+        address: 'Address here'},
+        [@category.id]
         )
     end
 
@@ -48,17 +51,19 @@ describe 'database' do
     it 'gets all locations in database' do
       location2 =
         MakerSpots.db.create_location(
-                name: "Location 2",
+                {name: "Location 2",
                 description: "Description goes here too",
                 phone: "972.898.0711",
-                address: 'An Address'
+                address: 'An Address'},
+                [@category.id]
                 )
       location3 =
         MakerSpots.db.create_location(
-                name: "Location 3",
+                {name: "Location 3",
                 description: "Description goes here also",
                 phone: "972.898.0733",
-                address: 'An Address too'
+                address: 'An Address too'},
+                [@category.id]
                 )
       locations = MakerSpots.db.get_all_locations
 
@@ -78,23 +83,29 @@ describe 'database' do
     it 'gets locations by category' do
       location2 =
         MakerSpots.db.create_location(
-                name: "Location 2",
-                description: "Description goes here too",
-                phone: "972.898.0711",
-                address: 'An Address',
-                category_id: 1
+                {
+                  name: "Location 2",
+                  description: "Description goes here too",
+                  phone: "972.898.0711",
+                  address: 'An Address'
+                },[@category.id]
                 )
-
-      locations = MakerSpots.db.get_locations_by_category(1)
+      locations = MakerSpots.db.get_locations_by_category(@category.id)
       expect(locations.length).to eq 2
       expect(locations.first).to be_a(Location)
-      expect(locations.first.name).to eq "Location" 
+      expect(locations.first.name).to eq "Location"
     end
 
     after(:each) do
       @db = SQLite3::Database.new "makerspots.db"
       @db.execute <<-SQL
         DELETE from locations
+      SQL
+      @db.execute <<-SQL
+        DELETE from category_locations
+      SQL
+      @db.execute <<-SQL
+        DELETE from categories
       SQL
     end
   end

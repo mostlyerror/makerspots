@@ -16,7 +16,8 @@ class SQLiteDatabase
   end
 
   class Location < ActiveRecord::Base
-    belongs_to :category
+    has_many :category_locations
+    has_many :categories, :through => :category_locations
     has_many :checkins
   end
 
@@ -25,7 +26,13 @@ class SQLiteDatabase
   end
 
   class Category < ActiveRecord::Base
-    has_many :categories
+    has_many :category_locations
+    has_many :locations, :through => :category_locations
+  end
+
+  class CategoryLocation < ActiveRecord::Base
+    belongs_to :location
+    belongs_to :category
   end
 
   def build_user(attrs)
@@ -53,8 +60,14 @@ class SQLiteDatabase
     MakerSpots::Location.new(attrs)
   end
 
-  def create_location(attrs)
+  def create_location(attrs, cat_id=nil)
     ar_location = Location.create(attrs)
+    if cat_id
+      cat_id.each do |cat_id|
+        params = { location_id: ar_location.id, category_id: cat_id }
+        result = CategoryLocation.create(params)
+      end
+    end
     build_location(ar_location)
   end
 
@@ -69,8 +82,11 @@ class SQLiteDatabase
   end
 
   def get_locations_by_category(cat_id)
-    ar_locations = Location.where(category_id: cat_id)
-
+    ar_category = Category.find(cat_id) rescue ActiveRecord::RecordNotFound
+    if ar_category == ActiveRecord::RecordNotFound
+      return nil
+    end
+    ar_locations = ar_category.locations
     return nil if ar_locations.empty?
 
     ar_locations.map { |location| build_location(location) }

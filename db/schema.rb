@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140604092823) do
+ActiveRecord::Schema.define(version: 20140604102430) do
 
   create_table "categories", force: true do |t|
     t.string "name"
+  end
+
+  create_table "category_locations", force: true do |t|
+    t.integer "category_id"
+    t.integer "location_id"
   end
 
   create_table "checkins", force: true do |t|
@@ -26,11 +31,10 @@ ActiveRecord::Schema.define(version: 20140604092823) do
   end
 
   create_table "locations", force: true do |t|
-    t.string  "name",        null: false
-    t.string  "description", null: false
-    t.string  "phone"
-    t.string  "address",     null: false
-    t.integer "category_id"
+    t.string "name",        null: false
+    t.string "description", null: false
+    t.string "phone"
+    t.string "address",     null: false
   end
 
   create_table "users", force: true do |t|

@@ -84,10 +84,10 @@ class SQLiteDatabase
   def get_locations_by_category(cat_id)
     ar_category = Category.find(cat_id) rescue ActiveRecord::RecordNotFound
     if ar_category == ActiveRecord::RecordNotFound
-      return nil
+      return { error: "That category does not exist"}
     end
     ar_locations = ar_category.locations
-    return nil if ar_locations.empty?
+    return { error: "No locations in this category "} if ar_locations.empty?
 
     ar_locations.map { |location| build_location(location) }
   end

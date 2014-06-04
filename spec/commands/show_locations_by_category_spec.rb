@@ -26,15 +26,14 @@ describe 'ShowLocationsByCategory' do
   end
 
   it 'returns an array of locations in a category' do
-    result = MakerSpots::ShowLocationsByCategory.run(1)
+    result = MakerSpots::ShowLocationsByCategory.run(@category.id)
 
     expect(result[:success?]).to eq true
     expect(result[:locations].first).to be_a(Location)
   end
 
   it 'returns an error if no locations exist in a category' do
-    result = MakerSpots::ShowLocationsByCategory.run(2)
-
+    result = MakerSpots::ShowLocationsByCategory.run(0)
     expect(result[:success?]).to eq false
     expect(result).to include(:error)
   end

@@ -71,6 +71,8 @@ class SQLiteDatabase
   def get_locations_by_category(cat_id)
     ar_locations = Location.where(category_id: cat_id)
 
+    return nil if ar_locations.empty?
+
     ar_locations.map { |location| build_location(location) }
   end
 

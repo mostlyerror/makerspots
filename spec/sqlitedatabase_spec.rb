@@ -222,4 +222,23 @@ describe 'database' do
       SQL
     end
   end
+
+  describe 'categories' do
+    before do
+
+    end
+
+    it 'exists' do
+      category = MakerSpots.db.create_category(name: "Coffee")
+
+      expect(category).to be_a(Category)
+    end
+
+    after(:each) do
+      @db = SQLite3::Database.new "makerspots.db"
+      @db.execute <<-SQL
+        DELETE from categories
+      SQL
+    end
+  end
 end

@@ -16,11 +16,16 @@ class SQLiteDatabase
   end
 
   class Location < ActiveRecord::Base
+    belongs_to :category
     has_many :checkins
   end
 
   class User < ActiveRecord::Base
     has_many :checkins
+  end
+
+  class Category < ActiveRecord::Base
+    has_many :categories
   end
 
   def build_user(attrs)
@@ -92,6 +97,15 @@ class SQLiteDatabase
       ar_checkin.update_attributes(checked_in: false)
       build_checkin(ar_checkin)
     end
+  end
+
+  def build_category(attrs)
+    MakerSpots::Category.new(attrs)
+  end
+
+  def create_category(attrs)
+    ar_category = Category.create(attrs)
+    build_category(ar_category)
   end
 
 end

@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140530135253) do
+ActiveRecord::Schema.define(version: 20140604092823) do
+
+  create_table "categories", force: true do |t|
+    t.string "name"
+  end
 
   create_table "checkins", force: true do |t|
     t.integer  "user_id"
@@ -22,10 +26,11 @@ ActiveRecord::Schema.define(version: 20140530135253) do
   end
 
   create_table "locations", force: true do |t|
-    t.string "name",        null: false
-    t.string "description", null: false
-    t.string "phone"
-    t.string "address",     null: false
+    t.string  "name",        null: false
+    t.string  "description", null: false
+    t.string  "phone"
+    t.string  "address",     null: false
+    t.integer "category_id"
   end
 
   create_table "users", force: true do |t|

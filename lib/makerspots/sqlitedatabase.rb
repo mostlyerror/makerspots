@@ -3,10 +3,11 @@ require 'active_record'
 class SQLiteDatabase
 
   def initialize
-    ActiveRecord::Base.establish_connection(
-      :adapter => 'sqlite3',
-      :database => 'makerspots.db'
-    )
+    ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/makerspotsdb')
+    # ActiveRecord::Base.establish_connection(
+    #   :adapter => 'postgresql',
+    #   :database => 'makerspotsdb'
+    # )
   end
 
   # Define models and relationships here (yes, classes within a class)
